@@ -2,6 +2,14 @@
     background-color: whitesmoke;
 }
 
-.button-add {
+.button-patient {
 
+}
+
+.separate-button {
+    padding: 2px;
+}
+
+.tab-name {
+    font-weight: bold;
 }

@@ -2,10 +2,11 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import './CSS/Home.css';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import ListPatientComponent from "./component/ListPatientComponent";
 import CreatePatient from "./component/CreatePatient";
 import ViewPatient from "./component/ViewPatient";
+import RendezVous from "./component/RendezVous";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
 
@@ -15,7 +16,7 @@ import Footer from "./component/Footer";
 function App() {
     return (
         <div className="App">
-            <Router>
+            <BrowserRouter>
                 <Header />
                 <div className="container">
                     <Switch>
@@ -23,10 +24,11 @@ function App() {
                         <Route path="/patients" component = {ListPatientComponent}/>
                         <Route path="/add-patient/:id" component = {CreatePatient}/>
                         <Route path="/view-patient/:id" component = {ViewPatient}/>
+                        <Route path="/rdv" exact component ={RendezVous}/>
                     </Switch>
                 </div>
                 <Footer />
-            </Router>
+            </BrowserRouter>
         </div>
     )
 }

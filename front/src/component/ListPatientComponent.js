@@ -13,6 +13,7 @@ class ListPatientComponent extends Component {
         this.addPatient = this.addPatient.bind(this);
         this.updatePatient = this.updatePatient.bind(this);
         this.deletePatient = this.deletePatient.bind(this);
+        this.takeRdv = this.takeRdv.bind(this);
     }
 
     componentDidMount() {
@@ -40,18 +41,25 @@ class ListPatientComponent extends Component {
         this.props.history.push(`/add-patient/${id}`);
     }
 
+    takeRdv() {
+        this.props.history.push('/rdv');
+    }
+
     render() {
         return (
             <div>
                 <h2 className="text-center">List Patients</h2>
-                <div className ="container-fluid">
-                    <button className="btn btn-primary button-add" onClick={this.addPatient}>Add Patient</button>
+                <br/>
+                <div className ="container-fluid button-patient">
+                    <button className="btn btn-primary" onClick={this.addPatient}>Add Patient</button>
+                    <div className="separate-button"/>
+                    <button className="btn btn-primary" onClick={this.takeRdv}>Rendez-Vous</button>
                 </div>
                 <br/><br/>
                 <div className ="row">
                     <table className ="table table-striped table-bordered tableau-list">
                         <thead>
-                        <tr>
+                        <tr className="tab-name">
                             <td>Patient ID</td>
                             <td>Patient LastName</td>
                             <td>Patient FirstName</td>

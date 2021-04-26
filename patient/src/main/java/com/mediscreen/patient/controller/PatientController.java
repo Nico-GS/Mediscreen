@@ -44,12 +44,12 @@ public class PatientController {
     @GetMapping("/patient")
     public List<Patient> getPatient() {
         LOGGER.info("GET Patient OK");
-        return (List<Patient>) patientRepository.findAll();
+        return patientRepository.findAll();
     }
 
     @GetMapping("/patient/{id}")
     public ResponseEntity <Patient> getPatientById(@PathVariable int id) {
-        LOGGER.info("GET Patient by ID OK :" + id);
+        LOGGER.info("GET Patient by ID OK : " + id);
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Patient don't exist with ID : " + id));
         return ResponseEntity.ok(patient);

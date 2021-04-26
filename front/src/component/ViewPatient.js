@@ -26,28 +26,40 @@ class ViewPatient extends Component {
                     <h3 className = "text-center">View Patient Details</h3>
                     <div className = "card-body">
                         <div className = "row">
-                            <label>Patient First Name :</label>
-                            <div>{this.state.patient.firstName}</div>
+                            <label>Patient First Name : </label>
+                            <div className="font-weight-bold">
+                                {this.state.patient.firstName}
+                            </div>
                         </div>
                         <div className = "row">
-                            <label>Patient Last Name :</label>
-                            <div>{this.state.patient.lastName}</div>
+                            <label>Patient Last Name : </label>
+                            <div className="font-weight-bold">
+                                {this.state.patient.lastName}
+                            </div>
                         </div>
                         <div className = "row">
-                            <label> Date of Birth: </label>
-                            <div>{this.state.patient.dateOfBirth}</div>
+                            <label> Date of Birth : </label>
+                            <div className="font-weight-bold">
+                                {this.state.patient.dateOfBirth}
+                            </div>
                         </div>
                         <div className = "row">
-                            <label>Sex :</label>
-                            <div>{this.state.patient.sex}</div>
+                            <label>Sex : </label>
+                            <div className="font-weight-bold">
+                                {this.state.patient.sex}
+                            </div>
                         </div>
                         <div className = "row">
-                            <label>Address :</label>
-                            <div>{this.state.patient.address}</div>
+                            <label>Address : </label>
+                            <div className="font-weight-bold">
+                                {this.state.patient.address}
+                            </div>
                         </div>
                         <div className = "row">
-                            <label>Phone Number :</label>
-                            <div>{this.state.patient.phoneNumber}</div>
+                            <label>Phone Number : </label>
+                            <div className="font-weight-bold">
+                                {this.state.patient.phoneNumber}
+                            </div>
                         </div>
                     </div>
 

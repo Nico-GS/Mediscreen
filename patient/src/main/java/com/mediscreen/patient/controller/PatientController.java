@@ -49,6 +49,7 @@ public class PatientController {
 
     @GetMapping("/patient/{id}")
     public ResponseEntity <Patient> getPatientById(@PathVariable int id) {
+        LOGGER.info("GET Patient by ID OK :" + id);
         Patient patient = patientRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Patient don't exist with ID : " + id));
         return ResponseEntity.ok(patient);
@@ -78,6 +79,7 @@ public class PatientController {
         patient.setAddress(patients.getAddress());
         patient.setPhoneNumber(patients.getPhoneNumber());
         Patient updatePatient = patientRepository.save(patient);
+        LOGGER.info("Update Patient OK : " + id);
         return ResponseEntity.ok(updatePatient);
     }
 
@@ -89,6 +91,7 @@ public class PatientController {
         patientRepository.delete(patient);
         Map<String, Boolean> response = new HashMap<>();
         response.put("Deleted", Boolean.TRUE);
+        LOGGER.info("Delete Patient OK : " + id);
         return ResponseEntity.ok(response);
     }
 

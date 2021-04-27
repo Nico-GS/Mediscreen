@@ -1,6 +1,7 @@
 package com.mediscreen.patient.controller;
 
 import com.mediscreen.patient.exception.ResourceNotFoundException;
+import com.mediscreen.patient.model.Patient;
 import com.mediscreen.patient.model.Rdv;
 import com.mediscreen.patient.repository.RdvRepository;
 import com.mediscreen.patient.service.RdvService;
@@ -13,7 +14,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -71,12 +74,14 @@ public class RdvController {
 
     @ApiOperation(value = "Delete RDV by ID")
     @DeleteMapping("/rdv/{id}")
-    public ResponseEntity<Rdv> deleteRdv (@PathVariable int id) {
-        Rdv rdv = rdvRepository.findById(id)
+    public ResponseEntity<Map<String, Boolean>> deleteRdv(@PathVariable("id") int id) {
+        Rdv rdv1 = rdvRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("RDV not found with ID : " + id));
-        rdvRepository.delete(rdv);
-        LOGGER.info("RDV deleted : " + id);
-        return ResponseEntity.ok(rdv);
+        rdvRepository.delete(rdv1);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("RDV Deleted", Boolean.TRUE);
+        LOGGER.info("Delete RDV OK : " + id);
+        return ResponseEntity.ok(response);
     }
 
 }

@@ -7,7 +7,8 @@ import com.mediscreen.patient.repository.RdvRepository;
 import com.mediscreen.patient.service.RdvService;
 import io.swagger.annotations.ApiOperation;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -23,7 +24,7 @@ import java.util.Map;
 @RequestMapping("/api/")
 public class RdvController {
 
-    private final Logger LOGGER = LogManager.getLogger(RdvController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(RdvController.class);
 
     @Autowired
     private RdvRepository rdvRepository;

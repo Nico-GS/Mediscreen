@@ -5,10 +5,10 @@ import com.mediscreen.patient.model.Patient;
 import com.mediscreen.patient.repository.PatientRepository;
 import com.mediscreen.patient.service.PatientService;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.Response;
-import org.apache.logging.log4j.LogManager;
 
-import org.apache.logging.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,7 +26,7 @@ import java.util.Map;
 @RequestMapping("/api/")
 public class PatientController {
 
-    private final Logger LOGGER = LogManager.getLogger(PatientController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(RdvController.class);
 
     @Autowired
     private PatientRepository patientRepository;

@@ -17,4 +17,8 @@ public class NotesServices {
         return notesRepository.findById(id);
     }
 
+    public void createNotes (Notes notes) {
+        notesRepository.save(notes);
+    }
+
 }

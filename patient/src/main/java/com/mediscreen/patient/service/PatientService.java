@@ -18,8 +18,6 @@ public class PatientService {
         patientRepo.save(patient);
     }
 
-
-
     public Optional<Patient> getById (int id) {
         return patientRepo.findById(id);
     }

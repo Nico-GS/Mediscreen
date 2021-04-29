@@ -7,6 +7,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -27,6 +28,7 @@ public class Notes {
     private String note;
 
     @Field(value = "dateNote")
+    @DateTimeFormat(pattern = "YYYY-mm-dd")
     private LocalDate dateNote;
 
 }

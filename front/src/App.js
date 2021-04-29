@@ -9,6 +9,7 @@ import ViewPatient from "./component/patient/ViewPatient";
 import RendezVous from "./component/patient/RendezVous";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
+import ListNotes from "./component/notes/ListNotes";
 import CreateNotes from "./component/notes/CreateNotes";
 
 
@@ -26,7 +27,8 @@ function App() {
                         <Route path="/add-patient/:id" component = {CreatePatient}/>
                         <Route path="/view-patient/:id" component = {ViewPatient}/>
                         <Route path="/rdv" exact component ={RendezVous}/>
-                        <Route path="/notes" exact component ={CreateNotes}/>
+                        <Route path="/notes" exact component ={ListNotes}/>
+                        <Route path="/add-notes/" component = {CreateNotes}/>
                     </Switch>
                 </div>
                 <Footer />

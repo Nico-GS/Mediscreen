@@ -20,7 +20,7 @@ class ViewPatient extends Component {
     }
 
     addNotes() {
-        this.props.history.push('/notes');
+        this.props.history.push('/add-notes');
     }
 
     render() {

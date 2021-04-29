@@ -1,14 +1,13 @@
 package com.mediscreen.notes.controller;
 
+import com.mediscreen.notes.exception.ResourceNotFoundException;
 import com.mediscreen.notes.model.Notes;
 import com.mediscreen.notes.repository.NotesRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,6 +25,14 @@ public class NotesController {
     public List<Notes> getNotes() {
         LOGGER.info("GET Notes OK");
         return notesRepository.findAll();
+    }
+
+    @GetMapping("/notes/{id}")
+    public ResponseEntity<Notes> getNotesById(@PathVariable String id) {
+        LOGGER.info("GET Patient by ID OK : " + id);
+        Notes notes = notesRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Notes don't exist with ID : " + id));
+        return ResponseEntity.ok(notes);
     }
 
 

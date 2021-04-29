@@ -9,6 +9,7 @@ class ListNotes extends Component {
         this.state = {
             notes: []
         }
+        this.addNotes = this.addNotes.bind(this);
     }
 
     componentDidMount() {
@@ -17,14 +18,18 @@ class ListNotes extends Component {
         })
     }
 
+    addNotes() {
+        this.props.history.push('/add-notes');
+    }
+
     render() {
         return (
             <div>
                 <h2 className="text-center">List Notes</h2>
                 <br/>
                 <br/><br/>
-                <div className ="row">
-                    <table className ="table table-striped table-bordered tableau-list">
+                <div className="row">
+                    <table className="table table-striped table-bordered tableau-list">
                         <thead>
                         <tr className="tab-name">
                             <td>Notes ID</td>
@@ -38,20 +43,21 @@ class ListNotes extends Component {
                         <tbody>
                         {
                             this.state.notes.map(note =>
-                                <tr key = {note.id}>
+                                <tr key={note.id}>
                                     <td>{note.id}</td>
                                     <td>{note.patientId}</td>
                                     <td>{note.lastName}</td>
                                     <td>{note.firstName}</td>
                                     <td>{note.note}</td>
                                     <td>{note.dateNote}</td>
-
                                 </tr>
                             )
                         }
                         </tbody>
                     </table>
-
+                    <div className="container-fluid button-patient">
+                        <button className="btn btn-primary" onClick={this.addNotes}>Add Notes</button>
+                    </div>
                 </div>
 
             </div>
@@ -59,4 +65,5 @@ class ListNotes extends Component {
     }
 
 }
+
 export default ListNotes;

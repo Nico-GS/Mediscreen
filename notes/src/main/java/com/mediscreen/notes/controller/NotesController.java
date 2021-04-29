@@ -55,7 +55,7 @@ public class NotesController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PutMapping("/patient/{id}")
+    @PutMapping("/notes/{id}")
     public ResponseEntity<Notes> updatePatient(@RequestBody @Valid @Validated Notes notes, @PathVariable String id) {
         Notes note = notesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Patient not found with ID :" + id));

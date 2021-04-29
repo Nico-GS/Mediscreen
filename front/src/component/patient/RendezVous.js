@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import RdvService from "../service/RdvService";
+import RdvService from "../../service/RdvService";
 
 class RendezVous extends Component {
 

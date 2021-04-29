@@ -20,7 +20,6 @@ import java.time.LocalDate;
 public class Notes {
 
     @Id
-
     private String id;
 
     @Field(value = "patientId")

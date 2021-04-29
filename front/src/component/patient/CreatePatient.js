@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import PatientService from "../service/PatientService";
+import PatientService from "../../service/PatientService";
 
 class CreatePatient extends Component {
 
@@ -53,6 +53,7 @@ class CreatePatient extends Component {
             phoneNumber: this.state.phoneNumber
         };
         console.log("Patient =>" + JSON.stringify(patient));
+        console.log(PatientService.createPatient(patient));
 
         if (this.state.id === '_add') {
             PatientService.createPatient(patient).then(response => {

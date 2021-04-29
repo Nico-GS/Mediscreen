@@ -3,12 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import './CSS/Home.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import ListPatientComponent from "./component/ListPatientComponent";
-import CreatePatient from "./component/CreatePatient";
-import ViewPatient from "./component/ViewPatient";
-import RendezVous from "./component/RendezVous";
+import ListPatientComponent from "./component/patient/ListPatientComponent";
+import CreatePatient from "./component/patient/CreatePatient";
+import ViewPatient from "./component/patient/ViewPatient";
+import RendezVous from "./component/patient/RendezVous";
 import Header from "./component/Header";
 import Footer from "./component/Footer";
+import CreateNotes from "./component/notes/CreateNotes";
 
 
 
@@ -25,6 +26,7 @@ function App() {
                         <Route path="/add-patient/:id" component = {CreatePatient}/>
                         <Route path="/view-patient/:id" component = {ViewPatient}/>
                         <Route path="/rdv" exact component ={RendezVous}/>
+                        <Route path="/notes" exact component ={CreateNotes}/>
                     </Switch>
                 </div>
                 <Footer />

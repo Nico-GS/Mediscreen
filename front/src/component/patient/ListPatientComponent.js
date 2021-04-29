@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import PatientService from "../service/PatientService";
-import '../CSS/ListPatient.css';
+import PatientService from "../../service/PatientService";
+import '../../CSS/ListPatient.css';
 
 class ListPatientComponent extends Component {
 

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import PatientService from "../service/PatientService";
+import PatientService from "../../service/PatientService";
 
 class ViewPatient extends Component {
 
@@ -10,12 +10,17 @@ class ViewPatient extends Component {
             id: this.props.match.params.id,
             patient: {}
         }
+        this.addNotes = this.addNotes.bind(this);
     }
 
     componentDidMount() {
         PatientService.getPatientById(this.state.id).then(response => {
             this.setState({patient: response.data});
         })
+    }
+
+    addNotes() {
+        this.props.history.push('/notes');
     }
 
     render() {
@@ -60,6 +65,9 @@ class ViewPatient extends Component {
                             <div className="font-weight-bold">
                                 {this.state.patient.phoneNumber}
                             </div>
+                        </div>
+                        <div className ="container-fluid button-patient">
+                            <button className="btn btn-primary" onClick={this.addNotes}>Add Notes</button>
                         </div>
                     </div>
 

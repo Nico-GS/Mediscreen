@@ -13,7 +13,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
@@ -63,6 +65,17 @@ public class NotesController {
         Notes updateNotes = notesRepository.save(note);
         LOGGER.info("Update Notes OK : " + id);
         return ResponseEntity.ok(updateNotes);
+    }
+
+    @DeleteMapping("/notes/{id}")
+    public ResponseEntity<Map<String, Boolean>> deletePatient(@PathVariable("id") String id) {
+        Notes note = notesRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Notes not found with ID : " + id));
+        notesRepository.delete(note);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("Deleted", Boolean.TRUE);
+        LOGGER.info("Delete Note OK : " + id);
+        return ResponseEntity.ok(response);
     }
 
 

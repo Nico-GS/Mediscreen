@@ -9,6 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.annotation.Generated;
 import java.time.LocalDate;
 
 @AllArgsConstructor
@@ -19,6 +20,7 @@ import java.time.LocalDate;
 public class Notes {
 
     @Id
+
     private String id;
 
     @Field(value = "patientId")

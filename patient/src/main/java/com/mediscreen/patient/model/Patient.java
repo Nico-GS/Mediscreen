@@ -2,10 +2,12 @@ package com.mediscreen.patient.model;
 
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 
@@ -36,6 +38,7 @@ public class Patient {
 
     @Column(name = "date_birth")
     @NotNull(message = "Date of Birth can't be null")
+    @DateTimeFormat(pattern = "YYYY-mm-dd")
     private LocalDate dateOfBirth;
 
     @Column(name = "address")

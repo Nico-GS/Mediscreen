@@ -29,10 +29,10 @@ public class PatientController {
     private final Logger LOGGER = LoggerFactory.getLogger(RdvController.class);
 
     @Autowired
-    private PatientRepository patientRepository;
+    public PatientRepository patientRepository;
 
     @Autowired
-    private PatientService patientService;
+    public PatientService patientService;
 
     @GetMapping("/")
     public String homePatient() {

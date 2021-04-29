@@ -18,6 +18,14 @@ class ListNotes extends Component {
         })
     }
 
+    updateNotes(id) {
+        this.props.history.push(`/add-notes/${id}`);
+    }
+
+    viewNotes(id) {
+        this.props.history.push(`/view-notes/${id}`);
+    }
+
     addNotes() {
         this.props.history.push('/add-notes');
     }
@@ -27,6 +35,9 @@ class ListNotes extends Component {
             <div>
                 <h2 className="text-center">List Notes</h2>
                 <br/>
+                <div className="container-fluid button-patient">
+                    <button className="btn btn-primary" onClick={this.addNotes}>Add Notes</button>
+                </div>
                 <br/><br/>
                 <div className="row">
                     <table className="table table-striped table-bordered tableau-list">
@@ -50,14 +61,16 @@ class ListNotes extends Component {
                                     <td>{note.firstName}</td>
                                     <td>{note.note}</td>
                                     <td>{note.dateNote}</td>
+                                    <td>
+                                        <button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>
+                                        <button style={{marginLeft: "20px"}} onClick={ () => this.viewNotes(note.id)} className="btn btn-primary">View</button>
+
+                                    </td>
                                 </tr>
                             )
                         }
                         </tbody>
                     </table>
-                    <div className="container-fluid button-patient">
-                        <button className="btn btn-primary" onClick={this.addNotes}>Add Notes</button>
-                    </div>
                 </div>
 
             </div>

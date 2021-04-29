@@ -46,7 +46,7 @@ class CreateNotes extends Component {
             lastName: this.state.lastName,
             firstName: this.state.firstName,
             note: this.state.note,
-            dateNote: this.state.note
+            dateNote: this.state.dateNote
         };
         console.log("Notes =>" + JSON.stringify(note));
         console.log(NotesServices.createNotes(note));

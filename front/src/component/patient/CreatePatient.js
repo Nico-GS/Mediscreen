@@ -53,7 +53,6 @@ class CreatePatient extends Component {
             phoneNumber: this.state.phoneNumber
         };
         console.log("Patient =>" + JSON.stringify(patient));
-        console.log(PatientService.createPatient(patient));
 
         if (this.state.id === '_add') {
             PatientService.createPatient(patient).then(response => {

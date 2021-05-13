@@ -8,7 +8,7 @@ class ViewNotes extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            note: {}
+            note: {},
         }
     }
 

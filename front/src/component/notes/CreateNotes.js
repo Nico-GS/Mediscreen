@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import NotesServices from "../../service/NotesService";
+import PatientService from "../../service/PatientService";
 
 class CreateNotes extends Component {
 
@@ -12,7 +13,8 @@ class CreateNotes extends Component {
             lastName: '',
             firstName: '',
             note: '',
-            dateNote: ''
+            dateNote: '',
+            idPatient: ''
         }
         this.changePatIdHandler = this.changePatIdHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -25,7 +27,7 @@ class CreateNotes extends Component {
         if(this.state.id === '_add') {
             return
         } else {
-            NotesServices.getNotesById(this.state.id).then((response => {
+            NotesServices.getNotes(this.state.id).then((response => {
                 let note = response.data;
                 this.setState({
                     patientId: note.patientId,
@@ -35,6 +37,9 @@ class CreateNotes extends Component {
                     dateNote: note.dateNote
                 })
             }))
+            PatientService.getPatientById(this.state.idPatient).then(response => {
+                this.setState({idPatient: response.data})
+            })
         }
     }
 
@@ -105,10 +110,11 @@ class CreateNotes extends Component {
                             }
                             <div className = "card-body">
                                 <form>
-                                    <div className = "form-group">
-                                        <label>Patient ID</label>
-                                        <input placeholder="Patient ID" name="patientId" className="form-control"
-                                               value={this.state.patientId} onChange={this.changePatIdHandler}/>
+                                    <div className = "row">
+                                        <label>Patient ID : </label>
+                                        <div className="font-weight-bold">
+                                            {this.state.patientId}
+                                        </div>
                                     </div>
                                     <div className = "form-group">
                                         <label>Last Name</label>

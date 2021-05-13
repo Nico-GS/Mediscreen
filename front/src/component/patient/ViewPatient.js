@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import PatientService from "../../service/PatientService";
+import NotesService from "../../service/NotesService";
 
 class ViewPatient extends Component {
 
@@ -8,7 +9,8 @@ class ViewPatient extends Component {
 
         this.state = {
             id: this.props.match.params.id,
-            patient: {}
+            patient: {},
+            note: {}
         }
         this.addNotes = this.addNotes.bind(this);
     }
@@ -16,6 +18,9 @@ class ViewPatient extends Component {
     componentDidMount() {
         PatientService.getPatientById(this.state.id).then(response => {
             this.setState({patient: response.data});
+        })
+        NotesService.getNotesById(this.state.id).then(response => {
+            this.setState({note: response.data});
         })
     }
 

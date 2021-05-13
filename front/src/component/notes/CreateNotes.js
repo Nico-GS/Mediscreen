@@ -1,4 +1,3 @@
-// eslint-disable-next-line no-unused-vars
 import React, {Component} from "react";
 import NotesServices from "../../service/NotesService";
 
@@ -126,11 +125,7 @@ class CreateNotes extends Component {
                                         <input  name="note" className="form-control"
                                                 value={this.state.note} onChange={this.changeNoteHandler}/>
                                     </div>
-                                    <div className = "form-group">
-                                        <label>Date Note</label>
-                                        <input placeholder="Date" name="dateNote" className="form-control"
-                                               value={this.state.dateNote} onChange={this.changeDateNoteHandler}/>
-                                    </div>
+
 
                                     <button className="btn btn-success" onClick={this.saveOrUpdateNotes}>Save</button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>

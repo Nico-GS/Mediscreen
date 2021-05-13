@@ -26,14 +26,6 @@ public class Notes {
     @Field(value = "patientId")
     private int patientId;
 
-    @Field(value = "lastName")
-    @NotBlank(message = "LastName can't be blank")
-    private String lastName;
-
-    @Field(value = "firstName")
-    @NotBlank(message = "FirstName can't be blank")
-    private String firstName;
-
     @Field(value = "note")
     @NotBlank(message = "Note can't be blank")
     private String note;

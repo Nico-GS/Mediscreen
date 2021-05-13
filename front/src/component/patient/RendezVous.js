@@ -30,7 +30,6 @@ class RendezVous extends Component {
                     <table className ="table table-striped table-bordered tableau-list">
                         <thead>
                         <tr className="tab-name">
-                            <td>ID RDV</td>
                             <td>Name Patient</td>
                             <td>Date of RDV</td>
                             <td>Notes RDV</td>
@@ -40,7 +39,6 @@ class RendezVous extends Component {
                         {
                             this.state.rdvs.map(rdv =>
                                 <tr key = {rdv.id}>
-                                    <td>{rdv.idRdv}</td>
                                     <td>{rdv.namePatient}</td>
                                     <td>{rdv.datePriseRdv}</td>
                                     <td>{rdv.notesRdv}</td>

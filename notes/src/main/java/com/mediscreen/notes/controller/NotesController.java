@@ -56,7 +56,7 @@ public class NotesController {
     }
 
     @PutMapping("/notes/{id}")
-    public ResponseEntity<Notes> updatePatient(@RequestBody @Valid @Validated Notes notes, @PathVariable String id) {
+    public ResponseEntity<Notes> updateNotes(@RequestBody Notes notes, @PathVariable String id) {
         Notes note = notesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Patient not found with ID :" + id));
         note.setNote(notes.getNote());
@@ -68,7 +68,7 @@ public class NotesController {
     }
 
     @DeleteMapping("/notes/{id}")
-    public ResponseEntity<Map<String, Boolean>> deletePatient(@PathVariable("id") String id) {
+    public ResponseEntity<Map<String, Boolean>> deleteNotes(@PathVariable("id") String id) {
         Notes note = notesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Notes not found with ID : " + id));
         notesRepository.delete(note);

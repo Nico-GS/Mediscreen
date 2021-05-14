@@ -5,6 +5,7 @@ import com.mediscreen.patient.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -26,6 +27,10 @@ public class PatientService {
         return patientRepo.findAll();
     }
 
-    
+
+    public Patient findPatientByLastAndFirstName (String lastName, String firstName) {
+        Patient patient = patientRepo.findByLastNameAndFirstName(lastName, firstName);
+        return patient;
+    }
 
 }

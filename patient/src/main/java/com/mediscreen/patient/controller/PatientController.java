@@ -55,6 +55,13 @@ public class PatientController {
         return ResponseEntity.ok(patient);
     }
 
+    @GetMapping("/patient/getPatientLastAndFirst")
+    public ResponseEntity<Patient> getPatientByLastAndFirstName (@RequestParam("last") String lastName, @RequestParam("first") String firstName) {
+        LOGGER.info("GET Patient by Last & First Name OK : {} {}  ", lastName, firstName);
+        Patient patient = patientService.findPatientByLastAndFirstName(lastName, firstName);
+        return new ResponseEntity<>(patient, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "Add a Patient with information : LastName, FirstName, Address, Sex, Date of Birth")
     @PostMapping("/patient")
     public ResponseEntity addPatient(@RequestBody @Valid @Validated Patient patient) {

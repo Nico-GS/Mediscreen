@@ -110,11 +110,10 @@ class CreateNotes extends Component {
                             }
                             <div className = "card-body">
                                 <form>
-                                    <div className = "row">
-                                        <label>Patient ID : </label>
-                                        <div className="font-weight-bold">
-                                            {this.state.patientId}
-                                        </div>
+                                    <div className = "form-group">
+                                        <label>Patient ID</label>
+                                        <input placeholder="Patient ID" name="patientId" className="form-control"
+                                               value={this.state.id}/>
                                     </div>
                                     <div className = "form-group">
                                         <label>Last Name</label>

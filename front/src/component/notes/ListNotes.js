@@ -45,8 +45,6 @@ class ListNotes extends Component {
                         <tr className="tab-name">
                             <td>Notes ID</td>
                             <td>Patient ID</td>
-                            <td>Last Name</td>
-                            <td>First Name</td>
                             <td>Note</td>
                             <td>Date Note</td>
                         </tr>
@@ -57,8 +55,6 @@ class ListNotes extends Component {
                                 <tr key={note.id}>
                                     <td>{note.id}</td>
                                     <td>{note.patientId}</td>
-                                    <td>{note.lastName}</td>
-                                    <td>{note.firstName}</td>
                                     <td>{note.note}</td>
                                     <td>{note.dateNote}</td>
                                     <td>

@@ -32,18 +32,6 @@ class ViewNotes extends Component {
                             </div>
                         </div>
                         <div className = "row">
-                            <label>Last Name</label>
-                            <div className="font-weight-bold">
-                                {this.state.note.lastName}
-                            </div>
-                        </div>
-                        <div className = "row">
-                            <label>First Name</label>
-                            <div className="font-weight-bold">
-                                {this.state.note.firstName}
-                            </div>
-                        </div>
-                        <div className = "row">
                             <label>Note</label>
                             <div className="font-weight-bold">
                                 {this.state.note.note}

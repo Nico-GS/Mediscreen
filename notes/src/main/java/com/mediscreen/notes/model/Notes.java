@@ -9,7 +9,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.annotation.Generated;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
@@ -26,10 +25,19 @@ public class Notes {
     @Field(value = "patientId")
     private int patientId;
 
+    @Field(value = "lastName")
+    @NotBlank(message = "LastName can't be blank")
+    private String patientLastName;
+
+    @Field(value = "firstName")
+    @NotBlank(message = "FirstName can't be blank")
+    private String patientFirstName;
+
     @Field(value = "note")
     @NotBlank(message = "Note can't be blank")
     private String note;
 
+    // heure
     @Field(value = "dateNote")
     @DateTimeFormat(pattern = "YYYY-mm-dd")
     private LocalDate dateNote;

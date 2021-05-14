@@ -38,9 +38,16 @@ public class NotesController {
 
     @GetMapping("/notes/{id}")
     public ResponseEntity<Notes> getNotesById(@PathVariable String id) {
-        LOGGER.info("GET Notes- by ID OK : " + id);
+        LOGGER.info("GET Notes by ID OK : " + id);
         Notes notes = notesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Notes don't exist with ID : " + id));
+        return ResponseEntity.ok(notes);
+    }
+
+    @GetMapping("/notes/findByLastAndFirstName")
+    public ResponseEntity getNotesByFirstAndLastName (@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName) {
+        LOGGER.info("GET Notes patient by first and last name OK : {} - {} : ", patientLastName, patientFirstName);
+        List<Notes> notes = notesServices.findNotesByLastAndFirstName(patientLastName, patientFirstName);
         return ResponseEntity.ok(notes);
     }
 

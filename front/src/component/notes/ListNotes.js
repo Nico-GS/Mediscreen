@@ -23,7 +23,7 @@ class ListNotes extends Component {
     }
 
     addNotes() {
-        this.props.history.push('/add-notes');
+        this.props.history.push('/add-notes/');
     }
 
     render() {

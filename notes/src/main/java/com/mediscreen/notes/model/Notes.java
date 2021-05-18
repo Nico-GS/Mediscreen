@@ -26,11 +26,9 @@ public class Notes {
     private int patientId;
 
     @Field(value = "lastName")
-    @NotBlank(message = "LastName can't be blank")
     private String patientLastName;
 
     @Field(value = "firstName")
-    @NotBlank(message = "FirstName can't be blank")
     private String patientFirstName;
 
     @Field(value = "note")

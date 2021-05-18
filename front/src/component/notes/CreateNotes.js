@@ -10,8 +10,8 @@ class CreateNotes extends Component {
         this.state = {
             id: this.props.match.params.id,
             patientId: '',
-            lastName: '',
-            firstName: '',
+            patientLastName: '',
+            patientFirstName: '',
             note: '',
             dateNote: '',
             idPatient: ''
@@ -21,6 +21,7 @@ class CreateNotes extends Component {
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeNoteHandler = this.changeNoteHandler.bind(this);
         this.changeDateNoteHandler = this.changeDateNoteHandler.bind(this);
+        this.saveOrUpdateNotes = this.saveOrUpdateNotes.bind(this);
     }
 
     componentDidMount() {
@@ -30,9 +31,10 @@ class CreateNotes extends Component {
             NotesServices.getNotes(this.state.id).then((response => {
                 let note = response.data;
                 this.setState({
+                    id: note.id,
                     patientId: note.patientId,
-                    lastName: note.lastName,
-                    firstName: note.firstName,
+                    patientLastName: note.patientLastName,
+                    patientFirstName: note.patientFirstName,
                     note: note.note,
                     dateNote: note.dateNote
                 })
@@ -46,16 +48,17 @@ class CreateNotes extends Component {
     saveOrUpdateNotes = (e) => {
         e.preventDefault();
         let note = {
+            id: this.state.id,
             patientId: this.state.patientId,
-            lastName: this.state.lastName,
-            firstName: this.state.firstName,
+            patientLastName: this.state.patientLastName,
+            patientFirstName: this.state.patientFirstName,
             note: this.state.note,
             dateNote: this.state.dateNote
         };
-        console.log("Notes =>" + JSON.stringify(note));
-        console.log(NotesServices.createNotes(note));
+        // console.log("Notes =>" + JSON.stringify(note));
+        // console.log(NotesServices.createNotes(note));
 
-        if (this.state.id === '_add') {
+        if (this.state.id) {
             NotesServices.createNotes(note).then(response => {
                 this.props.history.push('/notes');
             });
@@ -66,16 +69,20 @@ class CreateNotes extends Component {
         }
     }
 
+    changeNoteIdHandler = (event) => {
+        this.setState({id: event.target.value});
+    }
+
     changePatIdHandler = (event) => {
         this.setState({patientId: event.target.value});
     }
 
     changeLastNameHandler = (event) => {
-        this.setState({lastName: event.target.value});
+        this.setState({patientLastName: event.target.value});
     }
 
     changeFirstNameHandler = (event) => {
-        this.setState({firstName: event.target.value});
+        this.setState({patientFirstName: event.target.value});
     }
 
     changeNoteHandler = (event) => {
@@ -111,23 +118,34 @@ class CreateNotes extends Component {
                             <div className = "card-body">
                                 <form>
                                     <div className = "form-group">
-                                        <label>Patient ID : {this.patientId}</label>
-
+                                        <label>Note ID</label>
+                                        <input placeholder="ID Note" name="id" className="form-control"
+                                               value={this.state.id} onChange={this.changeNoteIdHandler}/>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label>Patient ID</label>
+                                        <input placeholder="ID Patient" name="patientId" className="form-control"
+                                               value={this.state.patientId} onChange={this.changePatIdHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label>Last Name</label>
                                         <input placeholder="Last Name" name="lastName" className="form-control"
-                                               value={this.state.lastName} onChange={this.changeLastNameHandler}/>
+                                               value={this.state.patientLastName} onChange={this.changeLastNameHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label>First Name</label>
                                         <input placeholder="First Name" name="firstName" className="form-control"
-                                               value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
+                                               value={this.state.patientFirstName} onChange={this.changeFirstNameHandler}/>
                                     </div>
                                     <div className = "form-group">
                                         <label>Note</label>
                                         <input  name="note" className="form-control"
                                                 value={this.state.note} onChange={this.changeNoteHandler}/>
+                                    </div>
+                                    <div className = "form-group">
+                                        <label>Date : </label>
+                                        <input  name="note" className="form-control"
+                                                value={this.state.dateNote} onChange={this.changeDateNoteHandler}/>
                                     </div>
 
 

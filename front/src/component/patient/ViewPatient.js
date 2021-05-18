@@ -40,7 +40,7 @@ class ViewPatient extends Component {
             NotesService.getNotes(this.state.id).then((response) => {
                 let note = response.data;
                 this.setState({
-                    id: note.id,
+                    noteId: note.id,
                     patientId: note.patientId,
                     patientFirstName: note.patientFirstName,
                     patientLastName: note.patientLastName,
@@ -56,7 +56,7 @@ class ViewPatient extends Component {
     addNotes = (e) => {
         e.preventDefault();
         let note = {
-            id: this.state.id,
+            id: this.state.noteId,
             patientId: this.state.patient.id,
             patientLastName: this.state.patient.lastName,
             patientFirstName: this.state.patient.firstName,

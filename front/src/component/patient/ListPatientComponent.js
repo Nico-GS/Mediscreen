@@ -83,7 +83,7 @@ class ListPatientComponent extends Component {
                                         <td>
                                             <button style={{marginLeft: "20px"}} onClick={ () => this.updatePatient(patient.id_patient)} className="btn btn-primary">Update</button>
                                             <button style={{marginLeft: "20px"}} onClick={ () => this.viewPatient(patient.id_patient)} className="btn btn-primary">View</button>
-                                            <button style={{marginTop: "5px", marginLeft: "35px"}} onClick={ () => this.deletePatient(patient.id_patient)} className="btn btn-sm btn-danger">Delete</button>
+                                            <button style={{marginLeft: "20px"}} onClick={ () => this.deletePatient(patient.id_patient)} className="btn btn-danger">Delete</button>
 
                                         </td>
                                     </tr>

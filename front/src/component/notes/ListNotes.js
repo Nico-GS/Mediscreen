@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import NotesServices from "../../service/NotesService";
+import NotesService from "../../service/NotesService";
 
 class ListNotes extends Component {
 
@@ -24,6 +25,13 @@ class ListNotes extends Component {
 
     addNotes() {
         this.props.history.push('/add-notes/');
+    }
+
+    deleteNote(id) {
+        NotesService.deleteNotes(id).then(response => {
+            this.setState({notes: this.state.notes.filter(note => note.id !== id)});
+            this.props.history.push('/notes')
+        })
     }
 
     render() {
@@ -59,6 +67,7 @@ class ListNotes extends Component {
                                     <td>{note.dateNote}</td>
                                     <td>
                                         <button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>
+                                        <button style={{marginLeft: "20px"}} onClick={ () => this.deleteNote(note.id)} className="btn btn-primary">Delete</button>
 
                                     </td>
                                 </tr>

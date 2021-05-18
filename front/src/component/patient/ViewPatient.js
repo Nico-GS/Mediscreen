@@ -19,7 +19,7 @@ class ViewPatient extends Component {
             patientFirstName: '',
             note: '',
             dateNote: '',
-            idPatient: ''
+
 
         }
         this.addNotes = this.addNotes.bind(this);
@@ -41,7 +41,7 @@ class ViewPatient extends Component {
                 let note = response.data;
                 this.setState({
                     id: note.id,
-                    idPatient: note.idPatient,
+                    patientId: note.patientId,
                     patientFirstName: note.patientFirstName,
                     patientLastName: note.patientLastName,
                     note: note.note,
@@ -57,9 +57,9 @@ class ViewPatient extends Component {
         e.preventDefault();
         let note = {
             id: this.state.id,
-            patientId: this.state.patientId,
-            patientLastName: this.state.patientLastName,
-            patientFirstName: this.state.patientFirstName,
+            patientId: this.state.patient.id,
+            patientLastName: this.state.patient.lastName,
+            patientFirstName: this.state.patient.firstName,
             note: this.state.note,
             dateNote: this.state.dateNote
         }
@@ -133,9 +133,32 @@ class ViewPatient extends Component {
 
                         <div className="container card form-note">
                             <div className ="container-fluid button-patient">
+                                <div>ID Patient : {this.state.id}</div>
                                 <form>
-                                    <div className = "form-group">
-                                        <label>Id Patient : {this.state.id}</label>
+                                    <div className ="hide-form">
+                                        <label>ID Patient</label>
+                                        <input placeholder="" name="patientId" className="form-control"
+                                               value={this.state.id} />
+                                    </div>
+                                    <div className ="hide-form">
+                                        <label>ID Notes : </label>
+                                        <input placeholder="" name="idNote" className="form-control"
+                                               value={this.state.note.id} />
+                                    </div>
+                                    <div className ="hide-form">
+                                        <label>Last Name</label>
+                                        <input placeholder="" name="LastName" className="form-control"
+                                               value={this.state.lastName} />
+                                    </div>
+                                    <div className ="hide-form">
+                                        <label>First Name</label>
+                                        <input placeholder="" name="LastName" className="form-control"
+                                               value={this.state.firstName} />
+                                    </div>
+                                    <div className ="hide-form">
+                                        <label>Date Note</label>
+                                        <input placeholder="" name="LastName" className="form-control"
+                                               value={this.state.note.dateNote} />
                                     </div>
                                     <div className = "form-group">
                                         <label>Notes : </label>

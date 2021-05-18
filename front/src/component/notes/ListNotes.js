@@ -10,7 +10,6 @@ class ListNotes extends Component {
         this.state = {
             notes: []
         }
-        this.addNotes = this.addNotes.bind(this);
     }
 
     componentDidMount() {
@@ -23,9 +22,6 @@ class ListNotes extends Component {
         this.props.history.push(`/add-notes/${id}`);
     }
 
-    addNotes() {
-        this.props.history.push('/add-notes/');
-    }
 
     deleteNote(id) {
         NotesService.deleteNotes(id).then(response => {
@@ -40,7 +36,6 @@ class ListNotes extends Component {
                 <h2 className="text-center">List Notes</h2>
                 <br/>
                 <div className="container-fluid button-patient">
-                    <button className="btn btn-primary" onClick={this.addNotes}>Add Notes</button>
                 </div>
                 <br/><br/>
                 <div className="row">

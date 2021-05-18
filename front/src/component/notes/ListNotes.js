@@ -22,10 +22,6 @@ class ListNotes extends Component {
         this.props.history.push(`/add-notes/${id}`);
     }
 
-    viewNotes(id) {
-        this.props.history.push(`/view-notes/${id}`);
-    }
-
     addNotes() {
         this.props.history.push('/add-notes');
     }
@@ -45,6 +41,8 @@ class ListNotes extends Component {
                         <tr className="tab-name">
                             <td>Notes ID</td>
                             <td>Patient ID</td>
+                            <td>First Name</td>
+                            <td>Last Name</td>
                             <td>Note</td>
                             <td>Date Note</td>
                         </tr>
@@ -55,11 +53,12 @@ class ListNotes extends Component {
                                 <tr key={note.id}>
                                     <td>{note.id}</td>
                                     <td>{note.patientId}</td>
+                                    <td>{note.patientFirstName}</td>
+                                    <td>{note.patientLastName}</td>
                                     <td>{note.note}</td>
                                     <td>{note.dateNote}</td>
                                     <td>
                                         <button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>
-                                        <button style={{marginLeft: "20px"}} onClick={ () => this.viewNotes(note.id)} className="btn btn-primary">View</button>
 
                                     </td>
                                 </tr>

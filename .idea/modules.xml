@@ -4,7 +4,9 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Mediscreen.iml" filepath="$PROJECT_DIR$/.idea/Mediscreen.iml" />
       <module fileurl="file://$PROJECT_DIR$/front/front.iml" filepath="$PROJECT_DIR$/front/front.iml" />
+      <module fileurl="file://$PROJECT_DIR$/notes/notes.iml" filepath="$PROJECT_DIR$/notes/notes.iml" />
       <module fileurl="file://$PROJECT_DIR$/patient/patient.iml" filepath="$PROJECT_DIR$/patient/patient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rapport/rapport.iml" filepath="$PROJECT_DIR$/rapport/rapport.iml" />
     </modules>
   </component>
 </project>

@@ -7,16 +7,22 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="rapport" />
         <module name="patient" />
+        <module name="notes" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="notes" target="1.8" />
       <module name="patient" target="1.8" />
+      <module name="rapport" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="notes" options="-parameters" />
       <module name="patient" options="-parameters" />
+      <module name="rapport" options="-parameters" />
     </option>
   </component>
 </project>

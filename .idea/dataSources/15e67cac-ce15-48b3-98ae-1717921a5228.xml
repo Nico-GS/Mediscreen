@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dataSource name="mediscreen@localhost">
+<dataSource name="mediscreen@MySQL">
   <database-model serializer="dbm" dbms="MYSQL" family-id="MYSQL" format-version="4.20">
     <root id="1">
       <ServerVersion>8.0.24</ServerVersion>
@@ -909,39 +909,63 @@ SELECT|sys.sys_config
     <table id="283" parent="3" name="patient">
       <Collation>utf8_general_ci</Collation>
     </table>
-    <column id="284" parent="283" name="id_patient">
+    <table id="284" parent="3" name="rendez_vous"/>
+    <column id="285" parent="283" name="id_patient">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="285" parent="283" name="last_name">
+    <column id="286" parent="283" name="last_name">
       <Position>2</Position>
       <DataType>varchar(60)|0s</DataType>
     </column>
-    <column id="286" parent="283" name="first_name">
+    <column id="287" parent="283" name="first_name">
       <Position>3</Position>
       <DataType>varchar(60)|0s</DataType>
     </column>
-    <column id="287" parent="283" name="date_birth">
+    <column id="288" parent="283" name="date_birth">
       <Position>4</Position>
       <DataType>date|0s</DataType>
     </column>
-    <column id="288" parent="283" name="sex">
+    <column id="289" parent="283" name="sex">
       <Position>5</Position>
       <DataType>varchar(1)|0s</DataType>
     </column>
-    <column id="289" parent="283" name="address">
+    <column id="290" parent="283" name="address">
       <Position>6</Position>
       <DataType>varchar(100)|0s</DataType>
     </column>
-    <column id="290" parent="283" name="phone_number">
+    <column id="291" parent="283" name="phone_number">
       <Position>7</Position>
-      <DataType>bigint|0s</DataType>
+      <DataType>mediumtext|0s</DataType>
     </column>
-    <key id="291" parent="283" name="PRIMARY">
+    <key id="292" parent="283" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id_patient</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="293" parent="284" name="id_rdv">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>null</SequenceIdentity>
+    </column>
+    <column id="294" parent="284" name="name_patient">
+      <Position>2</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <column id="295" parent="284" name="date_rdv">
+      <Position>3</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="296" parent="284" name="notes_rdv">
+      <Position>4</Position>
+      <DataType>varchar(100)|0s</DataType>
+    </column>
+    <key id="297" parent="284" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id_rdv</ColNames>
       <Primary>1</Primary>
     </key>
   </database-model>

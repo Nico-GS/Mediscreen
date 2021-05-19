@@ -56,7 +56,7 @@ class ViewPatient extends Component {
         e.preventDefault();
         let note = {
             id: this.state.noteId,
-            patientId: this.state.patient.id,
+            patientId: this.state.id,
             patientLastName: this.state.patient.lastName,
             patientFirstName: this.state.patient.firstName,
             note: this.state.note,

@@ -1,5 +1,6 @@
 package com.mediscreen.notes.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -37,7 +39,8 @@ public class Notes {
 
     // heure
     @Field(value = "dateNote")
-    @DateTimeFormat(pattern = "YYYY-mm-dd")
-    private LocalDate dateNote;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+//    @DateTimeFormat(pattern = "YYYY-mm-dd hh:mm:ss")
+    private LocalDateTime dateNote;
 
 }

@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PatientService from "../../service/PatientService";
 import NotesService from "../../service/NotesService";
+import moment from "moment";
 import '../../CSS/ViewPatient.css';
 
 class ViewPatient extends Component {
@@ -8,7 +9,6 @@ class ViewPatient extends Component {
 
     constructor(props) {
         super(props);
-
 
         this.state = {
             id: this.props.match.params.id,
@@ -18,8 +18,7 @@ class ViewPatient extends Component {
             patientLastName: '',
             patientFirstName: '',
             note: '',
-            dateNote: '',
-
+            dateNote: moment().format("YYYY-MM-DD hh:mm:ss"),
 
         }
         this.addNotes = this.addNotes.bind(this);
@@ -50,8 +49,8 @@ class ViewPatient extends Component {
             });
         }
 
-
     }
+
 
     addNotes = (e) => {
         e.preventDefault();
@@ -65,7 +64,7 @@ class ViewPatient extends Component {
         }
         if(this.state.id) {
             NotesService.createNotes(note).then(response => {
-                this.props.history.push('/')
+                this.props.history.push('/notes')
             });
         } else {
             NotesService.updateNotes(note, this.state.id).then(response => {
@@ -76,6 +75,10 @@ class ViewPatient extends Component {
 
     changeNote = (event) => {
         this.setState({note: event.target.value});
+    }
+
+    getDate = () => {
+        this.setState({dateNote: new Date()})
     }
 
 
@@ -158,7 +161,7 @@ class ViewPatient extends Component {
                                     <div className ="hide-form">
                                         <label>Date Note</label>
                                         <input placeholder="" name="LastName" className="form-control"
-                                               value={this.state.note.dateNote} />
+                                               value={this.getDate} />
                                     </div>
                                     <div className = "form-group">
                                         <label>Notes : </label>

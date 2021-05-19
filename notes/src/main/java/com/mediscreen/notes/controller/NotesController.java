@@ -58,7 +58,7 @@ public class NotesController {
             return ResponseEntity.badRequest().build();
         }
         notesServices.createNotes(notes);
-        LOGGER.info("Create Notes OK" + notes.getId());
+        LOGGER.info("Create Notes OK");
         return ResponseEntity.ok(HttpStatus.OK);
     }
 

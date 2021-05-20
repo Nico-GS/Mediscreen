@@ -50,7 +50,7 @@ class ViewPatient extends Component {
         }
         if (this.state.id) {
             NotesService.createNotes(note).then(response => {
-                this.props.history.push('/notes')
+                window.location.reload(true);
             });
         } else {
             NotesService.updateNotes(note, this.state.id).then(response => {
@@ -66,7 +66,7 @@ class ViewPatient extends Component {
     deleteNote(id) {
         NotesService.deleteNotes(id).then(response => {
             this.setState({notes: this.state.notes.filter(note => note.id !== id)});
-            this.props.history.push('/')
+            window.location.reload(true);
         })
     }
 
@@ -136,7 +136,7 @@ class ViewPatient extends Component {
                                                 <td>{note.note}</td>
                                                 <td>{note.dateNote}</td>
                                                 <td>
-                                                    {/*<button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>*/}
+                                                    <button className="btn btn-primary btn-sm">Update</button>
                                                     <button onClick={ () => this.deleteNote(note.id)} className="btn btn-sm btn-danger">Delete</button>
 
                                                 </td>

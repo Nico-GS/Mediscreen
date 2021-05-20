@@ -66,9 +66,18 @@ class ViewPatient extends Component {
     deleteNote(id) {
         NotesService.deleteNotes(id).then(response => {
             this.setState({notes: this.state.notes.filter(note => note.id !== id)});
-            window.location.reload(true);
+            this.handleRefresh();
         })
     }
+
+    handleRefresh = () => {
+        this.setState({});
+    }
+
+    handleRefreshAdd = () => {
+        this.setState({});
+    }
+
 
     getDate = () => {
         this.setState({dateNote: new Date()})
@@ -79,9 +88,11 @@ class ViewPatient extends Component {
         return (
             <div>
                 <br/><br/>
-                <div className="card col-md-6 offset-md-3">
+
+                <div className="card col-md-12 container-fluid">
                     <h3 className="text-center">View Patient Details</h3>
                     <div className="card-body">
+
                         <div className="row">
                             <label>Patient First Name : </label>
                             <div className="font-weight-bold">
@@ -119,14 +130,18 @@ class ViewPatient extends Component {
                             </div>
                         </div>
 
-                        <div className="separation">--------------------------------------------------------</div>
+                        <div className="container-fluid">
+                            <button className="btn btn-sm btn-dark">Reports</button>
+                        </div>
+
+                        <div className="separation card"/>
+                        <br/>
                         <div className="container card notes">
                             <div className="row">
                                 <table className="table table-striped table-bordered tableau-list">
                                     <thead>
                                     <tr className="tab-name">
-                                        <td>Note</td>
-                                        <td>Date</td>
+                                        <td className="container-fluid">Note</td>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -134,10 +149,11 @@ class ViewPatient extends Component {
                                         this.state.notes.map(note =>
                                             <tr key={note.id}>
                                                 <td>{note.note}</td>
-                                                <td>{note.dateNote}</td>
                                                 <td>
                                                     <button className="btn btn-primary btn-sm">Update</button>
-                                                    <button onClick={ () => this.deleteNote(note.id)} className="btn btn-sm btn-danger">Delete</button>
+                                                    <button onClick={() => this.deleteNote(note.id)}
+                                                            className="btn btn-sm btn-danger">X
+                                                    </button>
 
                                                 </td>
                                             </tr>
@@ -150,7 +166,6 @@ class ViewPatient extends Component {
 
                         <div className="card container form-note">
                             <div className="container">
-                                <div>ID Patient : {this.state.id}</div>
                                 <form>
                                     <div className="hide-form">
                                         <label>ID Patient</label>

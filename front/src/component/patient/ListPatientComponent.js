@@ -58,12 +58,12 @@ class ListPatientComponent extends Component {
                     <table className ="table table-striped table-bordered tableau-list">
                         <thead>
                         <tr className="tab-name">
-                            <td>Patient LastName</td>
-                            <td>Patient FirstName</td>
+                            <td>Last Name</td>
+                            <td>First Name</td>
                             <td>Birth Date</td>
                             <td>Sex</td>
                             <td>Address</td>
-                            <td>Phone Number</td>
+                            <td>Phone</td>
                         </tr>
                         </thead>
                         <tbody>

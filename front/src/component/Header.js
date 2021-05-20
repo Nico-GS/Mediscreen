@@ -22,16 +22,16 @@ class Header extends Component {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Accueil</Link>
+                            <Link className="nav-link" to="/">Home</Link>
                         </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/rdv">RDV</Link>
-                        </li>
+                        {/*<li className="nav-item">*/}
+                        {/*    <Link className="nav-link" to="/rdv">RDV</Link>*/}
+                        {/*</li>*/}
                         <li className="nav-item">
                             <Link className="nav-link" to="/notes">Notes</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link">Rapports</Link>
+                            <Link className="nav-link">Reports</Link>
                         </li>
                     </ul>
                 </div>

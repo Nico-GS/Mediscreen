@@ -61,8 +61,8 @@ class ListNotes extends Component {
                                     <td>{note.note}</td>
                                     <td>{note.dateNote}</td>
                                     <td>
-                                        <button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>
-                                        <button style={{marginLeft: "20px"}} onClick={ () => this.deleteNote(note.id)} className="btn btn-primary">Delete</button>
+                                        {/*<button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>*/}
+                                        <button onClick={ () => this.deleteNote(note.id)} className="btn btn-sm btn-danger">Delete</button>
 
                                     </td>
                                 </tr>

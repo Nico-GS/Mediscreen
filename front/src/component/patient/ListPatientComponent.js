@@ -52,15 +52,12 @@ class ListPatientComponent extends Component {
                 <br/>
                 <div className ="container-fluid button-patient">
                     <button className="btn btn-primary" onClick={this.addPatient}>Add Patient</button>
-                    <div className="separate-button"/>
-                    <button className="btn btn-primary" onClick={this.takeRdv}>Rendez-Vous</button>
                 </div>
                 <br/><br/>
                 <div className ="row">
                     <table className ="table table-striped table-bordered tableau-list">
                         <thead>
                         <tr className="tab-name">
-                            <td>Patient ID</td>
                             <td>Patient LastName</td>
                             <td>Patient FirstName</td>
                             <td>Birth Date</td>
@@ -73,7 +70,6 @@ class ListPatientComponent extends Component {
                         {
                             this.state.patients.map(patient =>
                                     <tr key = {patient.id}>
-                                        <td>{patient.id_patient}</td>
                                         <td>{patient.lastName}</td>
                                         <td>{patient.firstName}</td>
                                         <td>{patient.dateOfBirth}</td>

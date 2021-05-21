@@ -17,6 +17,7 @@
     "react-big-calendar": "^0.33.2",
     "react-dom": "^17.0.2",
     "react-icons": "^4.2.0",
+    "react-innertext": "^1.1.5",
     "react-pro-sidebar": "^0.6.0",
     "react-redux": "^7.2.3",
     "react-reminder-calendar": "^0.1.1",

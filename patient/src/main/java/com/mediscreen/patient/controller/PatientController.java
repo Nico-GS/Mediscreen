@@ -57,7 +57,7 @@ public class PatientController {
 
     @GetMapping("/patient/getPatientLastAndFirst")
     public ResponseEntity<Patient> getPatientByLastAndFirstName (@RequestParam("last") String lastName, @RequestParam("first") String firstName) {
-        LOGGER.info("GET Patient by Last & First Name OK : {} {}  ", lastName, firstName);
+        LOGGER.info("GET Patient by Last & First Name OK : {}   ", lastName);
         Patient patient = patientService.findPatientByLastAndFirstName(lastName, firstName);
         return new ResponseEntity<>(patient, HttpStatus.OK);
     }

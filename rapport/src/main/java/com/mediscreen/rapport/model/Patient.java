@@ -22,5 +22,4 @@ public class Patient {
     private long phoneNumber;
     private String sex;
 
-
 }

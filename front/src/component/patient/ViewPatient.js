@@ -4,6 +4,7 @@ import NotesService from "../../service/NotesService";
 import moment from "moment";
 import '../../CSS/ViewPatient.css';
 
+
 class ViewPatient extends Component {
 
 
@@ -19,7 +20,7 @@ class ViewPatient extends Component {
             patientLastName: '',
             patientFirstName: '',
             note: '',
-            dateNote: moment().format("YYYY-MM-DD hh:mm:ss"),
+            dateNote: moment().utc().format("YYYY-MM-DD hh:mm:ss"),
 
         }
         this.addNotes = this.addNotes.bind(this);
@@ -67,6 +68,12 @@ class ViewPatient extends Component {
         NotesService.deleteNotes(id).then(response => {
             this.setState({notes: this.state.notes.filter(note => note.id !== id)});
             this.handleRefresh();
+        })
+    }
+
+    updateNote(note) {
+        NotesService.updateNotes(note, this.state.id).then(response => {
+            this.props.history.push('/');
         })
     }
 
@@ -142,15 +149,19 @@ class ViewPatient extends Component {
                                     <thead>
                                     <tr className="tab-name">
                                         <td className="container-fluid">Note</td>
+                                        <td className="container-fluid">Date</td>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {
                                         this.state.notes.map(note =>
                                             <tr key={note.id}>
-                                                <td>{note.note}</td>
+                                                <td className="note">{note.note}</td>
                                                 <td>
-                                                    <button className="btn btn-primary btn-sm">Update</button>
+                                                    {note.dateNote}
+                                                </td>
+                                                <td>
+
                                                     <button onClick={() => this.deleteNote(note.id)}
                                                             className="btn btn-sm btn-danger">X
                                                     </button>

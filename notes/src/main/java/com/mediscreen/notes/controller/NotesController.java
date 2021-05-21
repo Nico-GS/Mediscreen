@@ -45,7 +45,7 @@ public class NotesController {
     }
 
     @GetMapping("/notes/findByLastAndFirstName")
-    public ResponseEntity getNotesByFirstAndLastName (@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName) {
+    public ResponseEntity getNotesByFirstAndLastName(@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName) {
         LOGGER.info("GET Notes patient by first and last name OK : {} - {} : ", patientLastName, patientFirstName);
         List<Notes> notes = notesServices.findNotesByLastAndFirstName(patientLastName, patientFirstName);
         return ResponseEntity.ok(notes);

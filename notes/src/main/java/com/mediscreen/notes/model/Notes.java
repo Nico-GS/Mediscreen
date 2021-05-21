@@ -37,7 +37,6 @@ public class Notes {
     @NotBlank(message = "Note can't be blank")
     private String note;
 
-    // heure
     @Field(value = "dateNote")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
 //    @DateTimeFormat(pattern = "YYYY-mm-dd hh:mm:ss")

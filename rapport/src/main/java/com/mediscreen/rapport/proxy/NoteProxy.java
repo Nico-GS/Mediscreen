@@ -11,6 +11,6 @@ import java.util.List;
 public interface NoteProxy {
 
     @GetMapping(value = "/api/notes/findByLastAndFirstName")
-    List<Note> getNotesPatientByLastAndFirstName(@RequestParam("last") String lastName, @RequestParam("first") String firstName);
+    List<Note> getNotesPatientByLastAndFirstName(@RequestParam("lastName") String lastName, @RequestParam("firstName") String firstName);
 
 }

@@ -25,6 +25,14 @@ public class RapportService {
     private final PatientProxy patientProxy;
     private final String[] declencheurs;
 
+    private final int THIRTEEN = 30;
+    private final int TRIGGER_THREE = 2;
+    private final int TRIGGER_FOUR = 4;
+    private final int TRIGGER_FIVE = 5;
+    private final int TRIGGER_SIX = 6;
+    private final int TRIGGER_SEVEN = 7;
+
+
     public RapportService(NoteProxy noteProxy, PatientProxy patientProxy, @Value("${listDeclencheurs}") String[] declencheurs) {
         this.noteProxy = noteProxy;
         this.patientProxy = patientProxy;
@@ -41,17 +49,17 @@ public class RapportService {
         Status status = Status.None;
 
         // CONSTANT
-        if( (age>30 && nbDeclencheurs>=8) ||
-                (Sex.F.equals(patient.getSex()) && age<30 && nbDeclencheurs>=7) ||
-                (Sex.M.equals(patient.getSex()) && age<30 && nbDeclencheurs>=5)
+        if( (age> 30 && nbDeclencheurs >= 8) ||
+                (Sex.F.equals(patient.getSex()) && age <30 && nbDeclencheurs >= 7) ||
+                (Sex.M.equals(patient.getSex()) && age <30 && nbDeclencheurs >= 5)
         ) {
             status = Status.EarlyOnset;
         } else if ( (age>30 && nbDeclencheurs>=6 ) ||
-                (Sex.F.equals(patient.getSex()) && age<30 && nbDeclencheurs>=4 && nbDeclencheurs<=6) ||
-                (Sex.M.equals(patient.getSex()) && age<30 && nbDeclencheurs>=3 && nbDeclencheurs<=4)
+                (Sex.F.equals(patient.getSex()) && age <30 && nbDeclencheurs>=4 && nbDeclencheurs <= 6) ||
+                (Sex.M.equals(patient.getSex()) && age <30 && nbDeclencheurs>=3 && nbDeclencheurs <= 4)
         ) {
             status = Status.InDanger;
-        } else if ( age>30 && nbDeclencheurs>=2
+        } else if ( age >30 && nbDeclencheurs >= 2
         ) {
             status = Status.Borderline;
         }

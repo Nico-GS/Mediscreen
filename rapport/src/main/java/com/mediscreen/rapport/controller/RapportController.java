@@ -31,7 +31,7 @@ public class RapportController {
 
     @GetMapping("/reports/{id}")
     public ResponseEntity<Rapport> getRapportById (@PathVariable int id) {
-        LOGGER.info("GET Rapports with ID : {} OK", id);
+        LOGGER.info("GET Rapport with ID : {} OK", id);
         Rapport rapport = rapportService.getRapportById(id);
         return new ResponseEntity<>(rapport, HttpStatus.OK);
     }

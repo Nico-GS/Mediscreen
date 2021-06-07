@@ -30,9 +30,6 @@ public class Rapport implements Serializable {
         this.status = status;
     }
 
-    public Rapport(String lastName, String firstName, String sex, long patientAge, Status status) {
-
-    }
 
     public String getLastName() {
         return lastName;

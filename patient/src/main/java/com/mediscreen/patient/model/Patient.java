@@ -50,6 +50,6 @@ public class Patient {
 
     @Column(name = "sex")
     @NotBlank(message = "Sex can't be blank")
-    private String sex;
+    private Sex sex;
 
 }

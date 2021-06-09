@@ -20,6 +20,6 @@ public class Patient {
     private LocalDate dateOfBirth;
     private String address;
     private long phoneNumber;
-    private Sex sex;
+    private String sex;
 
 }

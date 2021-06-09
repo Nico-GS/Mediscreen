@@ -59,7 +59,7 @@ public class RapportService {
                 (Sex.M.equals(patient.getSex()) && age <30 && nbDeclencheurs>=3 && nbDeclencheurs <= 4)
         ) {
             status = Status.InDanger;
-        } else if ( age >30 && nbDeclencheurs >= 2
+        } else if ( age > 30 && nbDeclencheurs >= 2
         ) {
             status = Status.Borderline;
         }

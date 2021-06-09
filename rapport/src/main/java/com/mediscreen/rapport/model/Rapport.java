@@ -1,9 +1,6 @@
 package com.mediscreen.rapport.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
 
 import java.io.Serializable;
 
@@ -14,7 +11,7 @@ public class Rapport implements Serializable {
 
     private String lastName;
     private String firstName;
-    private Sex sex;
+    private String sex;
     private long age;
 
     private Status status;
@@ -22,7 +19,7 @@ public class Rapport implements Serializable {
     public Rapport() {
     }
 
-    public Rapport(String lastName, String firstName, Sex sex, long age, Status status) {
+    public Rapport(String lastName, String firstName, String sex, long age, Status status) {
         this.lastName = lastName;
         this.firstName = firstName;
         this.sex = sex;
@@ -47,11 +44,11 @@ public class Rapport implements Serializable {
         this.firstName = firstName;
     }
 
-    public Sex getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(Sex sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

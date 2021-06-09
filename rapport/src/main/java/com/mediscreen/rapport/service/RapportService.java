@@ -50,7 +50,7 @@ public class RapportService {
         long age = getPatientAge(patient);
         Status status = Status.None;
 
-        // CONSTANT
+
         if( (age> THIRTEEN && nbDeclencheurs >= EIGHT) ||
                 (Sex.F.equals(patient.getSex()) && age < THIRTEEN && nbDeclencheurs >= SEVEN) ||
                 (Sex.M.equals(patient.getSex()) && age < THIRTEEN && nbDeclencheurs >= FIVE)

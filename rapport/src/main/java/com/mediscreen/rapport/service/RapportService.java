@@ -26,11 +26,13 @@ public class RapportService {
     private final String[] declencheurs;
 
     private final int THIRTEEN = 30;
-    private final int TRIGGER_THREE = 2;
-    private final int TRIGGER_FOUR = 4;
-    private final int TRIGGER_FIVE = 5;
-    private final int TRIGGER_SIX = 6;
-    private final int TRIGGER_SEVEN = 7;
+    private final int TWO = 2;
+    private final int THREE = 3;
+    private final int FOUR = 4;
+    private final int FIVE = 5;
+    private final int SIX = 6;
+    private final int SEVEN = 7;
+    private final int EIGHT = 8;
 
 
     public RapportService(NoteProxy noteProxy, PatientProxy patientProxy, @Value("${listDeclencheurs}") String[] declencheurs) {
@@ -39,7 +41,7 @@ public class RapportService {
         this.declencheurs = declencheurs;
     }
 
-    private long getPatientAge (Patient patient) {
+    public long getPatientAge (Patient patient) {
         return ChronoUnit.YEARS.between(patient.getDateOfBirth(), LocalDate.now());
     }
 
@@ -49,17 +51,17 @@ public class RapportService {
         Status status = Status.None;
 
         // CONSTANT
-        if( (age> 30 && nbDeclencheurs >= 8) ||
-                (Sex.F.equals(patient.getSex()) && age <30 && nbDeclencheurs >= 7) ||
-                (Sex.M.equals(patient.getSex()) && age <30 && nbDeclencheurs >= 5)
+        if( (age> THIRTEEN && nbDeclencheurs >= EIGHT) ||
+                (Sex.F.equals(patient.getSex()) && age < THIRTEEN && nbDeclencheurs >= SEVEN) ||
+                (Sex.M.equals(patient.getSex()) && age < THIRTEEN && nbDeclencheurs >= FIVE)
         ) {
             status = Status.EarlyOnset;
-        } else if ( (age>30 && nbDeclencheurs>=6 ) ||
-                (Sex.F.equals(patient.getSex()) && age <30 && nbDeclencheurs>=4 && nbDeclencheurs <= 6) ||
-                (Sex.M.equals(patient.getSex()) && age <30 && nbDeclencheurs>=3 && nbDeclencheurs <= 4)
+        } else if ( (age> THIRTEEN && nbDeclencheurs>= SIX ) ||
+                (Sex.F.equals(patient.getSex()) && age < THIRTEEN && nbDeclencheurs>= FOUR && nbDeclencheurs <= SIX) ||
+                (Sex.M.equals(patient.getSex()) && age < THIRTEEN && nbDeclencheurs>= THREE && nbDeclencheurs <= FOUR)
         ) {
             status = Status.InDanger;
-        } else if ( age > 30 && nbDeclencheurs >= 2
+        } else if ( age > THIRTEEN && nbDeclencheurs >= TWO
         ) {
             status = Status.Borderline;
         }

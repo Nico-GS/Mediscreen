@@ -11,6 +11,7 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 import ListNotes from "./component/notes/ListNotes";
 import CreateNotes from "./component/notes/CreateNotes";
+import CreateReports from "./component/reports/CreateReports";
 
 
 
@@ -29,6 +30,7 @@ function App() {
                         <Route path="/rdv" exact component ={RendezVous}/>
                         <Route path="/notes" exact component ={ListNotes}/>
                         <Route path="/add-notes/" component = {CreateNotes}/>
+                        <Route path="/create-report/" component = {CreateReports}/>
                     </Switch>
                 </div>
                 <Footer />

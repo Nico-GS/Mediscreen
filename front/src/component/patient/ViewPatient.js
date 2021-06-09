@@ -37,14 +37,14 @@ class ViewPatient extends Component {
         NotesService.getNotesById(this.state.notes).then(response => {
             this.setState({notes: response.data});
         })
-        ReportsService.getReportsByLastAndFirstName(this.state.report).then(response => {
+        ReportsService.getReportsById(this.state.report).then(response => {
             this.setState({report: response.data});
         })
 
     }
 
     getReport(firstName, lastName) {
-        ReportsService.getReportsByLastAndFirstName(firstName, lastName, this.state.id).then(response => {
+        ReportsService.getReportsByLastAndFirstName().then(response => {
             this.handleRefresh();
         })
     }

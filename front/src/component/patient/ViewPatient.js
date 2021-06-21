@@ -40,7 +40,6 @@ class ViewPatient extends Component {
         ReportsService.getReportsById(this.state.report).then(response => {
             this.setState({report: response.data});
         })
-
     }
 
     getReport(firstName, lastName) {

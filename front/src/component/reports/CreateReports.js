@@ -9,33 +9,23 @@ class CreateReports extends Component {
         super(props);
 
         this.state = {
-            id: this.props.match.params.id,
-            lastName: '',
-            firstName: ''
+            firstName: '',
+            lastName: ''
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
     }
 
     componentDidMount() {
-        ReportsService.getReportsById(this.state.id).then(response => {
-            let reports = response.data;
-            this.setState({
-                lastName: reports.lastName,
-                firstName: reports.firstName
-            })
-        })
 
     }
 
     createReports = (e) => {
         e.preventDefault();
-        let reports = {
-            lastName: this.state.lastName,
-            firstName: this.state.firstName
-        }
-        ReportsService.getReportsByLastAndFirstName(reports, this.state.id).then(response => {
-            this.props.history.push("/");
+        let firstName = this.state.firstName;
+        let lastName = this.state.lastName;
+        ReportsService.getReportsByLastAndFirstName(firstName, lastName).then(response => {
+            console.log(response);
         })
     }
 

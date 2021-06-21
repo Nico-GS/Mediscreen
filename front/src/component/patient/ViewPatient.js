@@ -21,7 +21,6 @@ class ViewPatient extends Component {
             patientLastName: '',
             patientFirstName: '',
             note: '',
-            report: [],
             dateNote: moment().utc().format("YYYY-MM-DD hh:mm:ss"),
 
         }
@@ -37,16 +36,9 @@ class ViewPatient extends Component {
         NotesService.getNotesById(this.state.notes).then(response => {
             this.setState({notes: response.data});
         })
-        ReportsService.getReportsById(this.state.report).then(response => {
-            this.setState({report: response.data});
-        })
     }
 
-    getReport(firstName, lastName) {
-        ReportsService.getReportsByLastAndFirstName().then(response => {
-            this.handleRefresh();
-        })
-    }
+
 
 
     addNotes = (e) => {
@@ -109,10 +101,6 @@ class ViewPatient extends Component {
 
                 <div className="card col-md-12 container-fluid">
                     <h3 className="text-center">View Patient Details</h3>
-                    <div className="container">
-                        <div className="text-center">Risk : </div>
-                        {}
-                    </div>
                     <div className="card-body">
 
                         <div className="row">

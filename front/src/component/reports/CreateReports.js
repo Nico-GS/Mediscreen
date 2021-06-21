@@ -1,7 +1,5 @@
 import React, {Component} from "react";
 import ReportsService from "../../service/ReportsService";
-import PatientService from "../../service/PatientService";
-
 
 class CreateReports extends Component {
 

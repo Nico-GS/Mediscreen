@@ -93,6 +93,13 @@ class ViewPatient extends Component {
         this.setState({dateNote: new Date()})
     }
 
+    getReports = (e) => {
+        e.preventDefault();
+        ReportsService.getReportsByLastAndFirstName(this.state.patient.firstName, this.state.patient.lastName).then(response => {
+            console.log(response);
+        })
+    }
+
 
     render() {
         return (
@@ -101,6 +108,9 @@ class ViewPatient extends Component {
 
                 <div className="card col-md-12 container-fluid">
                     <h3 className="text-center">View Patient Details</h3>
+                    <div className="container">
+                        <div className="text-center">Risk : </div>
+                    </div>
                     <div className="card-body">
 
                         <div className="row">
@@ -141,7 +151,7 @@ class ViewPatient extends Component {
                         </div>
 
                         <div className="container-fluid">
-                            <button className="btn btn-sm btn-dark">Reports</button>
+                            <button className="btn btn-sm btn-dark" onClick={this.getReports}>Reports</button>
                         </div>
 
                         <div className="separation card"/>

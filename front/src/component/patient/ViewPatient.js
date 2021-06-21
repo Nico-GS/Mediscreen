@@ -21,6 +21,8 @@ class ViewPatient extends Component {
             patientLastName: '',
             patientFirstName: '',
             note: '',
+            result: [],
+            theResult: '',
             dateNote: moment().utc().format("YYYY-MM-DD hh:mm:ss"),
 
         }
@@ -36,6 +38,9 @@ class ViewPatient extends Component {
         NotesService.getNotesById(this.state.notes).then(response => {
             this.setState({notes: response.data});
         })
+        ReportsService.getReportsById(this.state.id, this.state.result).then(response => {
+            this.setState({results: response.data});
+        })
     }
 
 
@@ -49,7 +54,7 @@ class ViewPatient extends Component {
             patientLastName: this.state.patient.lastName,
             patientFirstName: this.state.patient.firstName,
             note: this.state.note,
-            dateNote: this.state.dateNote
+            dateNote: this.state.dateNote,
         }
         if (this.state.id) {
             NotesService.createNotes(note).then(response => {
@@ -95,8 +100,13 @@ class ViewPatient extends Component {
 
     getReports = (e) => {
         e.preventDefault();
+        let resultReport;
         ReportsService.getReportsByLastAndFirstName(this.state.patient.firstName, this.state.patient.lastName).then(response => {
-            console.log(response);
+            resultReport = response.data;
+            // console.log(resultReport);
+            let result = resultReport.status;
+            console.log(result);
+            // window.alert(result);
         })
     }
 
@@ -109,7 +119,9 @@ class ViewPatient extends Component {
                 <div className="card col-md-12 container-fluid">
                     <h3 className="text-center">View Patient Details</h3>
                     <div className="container">
-                        <div className="text-center">Risk : </div>
+                        <div className="text-center">Risk :
+                            {this.state.result.status}
+                        </div>
                     </div>
                     <div className="card-body">
 

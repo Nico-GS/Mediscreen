@@ -8,9 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import javax.validation.Valid;
 import java.util.HashMap;
@@ -18,9 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/api/")
+@CrossOrigin(origins = "http://localhost:3000")
 public class NotesController {
+
 
     private Logger LOGGER = LoggerFactory.getLogger(NotesController.class);
 
@@ -62,10 +65,10 @@ public class NotesController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
-    @PutMapping("/notes/{id}")
-    public ResponseEntity<Notes> updateNotes(@RequestBody Notes notes, @PathVariable String id) {
+    @PutMapping(value = "/notes/{id}")
+    public ResponseEntity<Notes> updateNotes(@PathVariable String id, @RequestBody Notes notes) {
         Notes note = notesRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Patient not found with ID :" + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Note not found with ID :" + id));
         note.setNote(notes.getNote());
         note.setDateNote(notes.getDateNote());
         note.setPatientId(notes.getPatientId());

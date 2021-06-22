@@ -1,5 +1,5 @@
 FROM openjdk:8-jre
-EXPOSE 8081
+EXPOSE 8082
 MAINTAINER Nicolas Gros <nicolasgros@protonmail.com>
 ARG JAR_FILE=build/libs/*.jar
 COPY ${JAR_FILE} app.jar

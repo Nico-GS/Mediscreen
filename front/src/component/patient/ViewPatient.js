@@ -28,6 +28,7 @@ class ViewPatient extends Component {
         }
         this.addNotes = this.addNotes.bind(this);
         this.changeNote = this.changeNote.bind(this);
+        this.updateNote = this.updateNote.bind(this);
     }
 
 
@@ -38,12 +39,10 @@ class ViewPatient extends Component {
         NotesService.getNotesById(this.state.notes).then(response => {
             this.setState({notes: response.data});
         })
-        ReportsService.getReportsById(this.state.id, this.state.result).then(response => {
-            this.setState({results: response.data});
-        })
+        // ReportsService.getReportsById(this.state.id, this.state.result).then(response => {
+        //     this.setState({results: response.data});
+        // })
     }
-
-
 
 
     addNotes = (e) => {
@@ -60,11 +59,8 @@ class ViewPatient extends Component {
             NotesService.createNotes(note).then(response => {
                 window.location.reload(true);
             });
-        } else {
-            NotesService.updateNotes(note, this.state.id).then(response => {
-                this.props.history.push('/notes');
-            })
         }
+
     }
 
     changeNote = (event) => {
@@ -78,9 +74,13 @@ class ViewPatient extends Component {
         })
     }
 
-    updateNote(note) {
-        NotesService.updateNotes(note, this.state.id).then(response => {
-            this.props.history.push('/');
+    updateNote = (event, note) => {
+        let updatedNote = {...note, note: event.target.value};
+        console.log(note);
+        NotesService.updateNotes(updatedNote, note.id).then(response => {
+            this.setState({note: updatedNote});
+            // this.setState({note: event.target.value});
+            this.handleRefresh();
         })
     }
 
@@ -103,7 +103,7 @@ class ViewPatient extends Component {
         let resultReport;
         ReportsService.getReportsByLastAndFirstName(this.state.patient.firstName, this.state.patient.lastName).then(response => {
             resultReport = response.data;
-            // console.log(resultReport);
+            console.log(resultReport);
             let result = resultReport.status;
             console.log(result);
             // window.alert(result);
@@ -120,7 +120,7 @@ class ViewPatient extends Component {
                     <h3 className="text-center">View Patient Details</h3>
                     <div className="container">
                         <div className="text-center">Risk :
-                            {this.state.result.status}
+                            {}
                         </div>
                     </div>
                     <div className="card-body">
@@ -181,7 +181,7 @@ class ViewPatient extends Component {
                                     {
                                         this.state.notes.map(note =>
                                             <tr key={note.id}>
-                                                <td className="note">{note.note}</td>
+                                                <td className="note" suppressContentEditableWarning={true} contentEditable onBlur={(e) => this.updateNote(e, note)}>{note.note}</td>
                                                 <td>
                                                     {note.dateNote}
                                                 </td>
@@ -190,7 +190,6 @@ class ViewPatient extends Component {
                                                     <button onClick={() => this.deleteNote(note.id)}
                                                             className="btn btn-sm btn-danger">X
                                                     </button>
-
                                                 </td>
                                             </tr>
                                         )

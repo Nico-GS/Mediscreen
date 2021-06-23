@@ -145,9 +145,7 @@ class ViewPatient extends Component {
                         </div>
 
                         <div className="container-fluid">
-                            <button className="btn btn-sm btn-danger" onClick={this.getReports}>Click to request
-                                Report
-                            </button>
+                            <button className="btn btn-sm btn-danger" onClick={this.getReports}>Report</button>
                             <br/>
                             <div className="text-center">
                                 <h3>{this.state.theResult}</h3>

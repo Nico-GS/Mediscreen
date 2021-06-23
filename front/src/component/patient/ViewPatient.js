@@ -121,11 +121,6 @@ class ViewPatient extends Component {
 
                 <div className="card col-md-12 container-fluid">
                     <h3 className="text-center">View Patient Details</h3>
-                    <div className="container">
-                        <div className="text-center">Risk :
-                            {}
-                        </div>
-                    </div>
                     <div className="card-body">
 
                         <div className="row">
@@ -166,11 +161,14 @@ class ViewPatient extends Component {
                         </div>
 
                         <div className="container-fluid">
-                            <Popup trigger={<button className="btn btn-sm btn-dark" onClick={this.getReports}>Reports</button>} position="right center">
-                                <div>{this.state.theResult}</div>
-                            </Popup>
+                            <button className="btn btn-sm btn-danger" onClick={this.getReports}>Click to request Report</button>
                             <br/>
-                            <button className="btn btn-sm btn-dark" onClick={this.getReports}>Reports</button>
+                            <div className="text-center">
+                               <h3>{this.state.theResult}</h3>
+                            </div>
+                            <br/>
+
+
                         </div>
 
                         <div className="separation card"/>
@@ -189,7 +187,8 @@ class ViewPatient extends Component {
                                         this.state.notes.map(note =>
                                             <tr key={note.id}>
                                                 {/*<td className="note" suppressContentEditableWarning={true} contentEditable onBlur={(e) => this.updateNote(e, note)}>{note.note}</td>*/}
-                                                <td className="note" suppressContentEditableWarning={true}>{note.note}</td>
+                                                <td className="note"
+                                                    suppressContentEditableWarning={true}>{note.note}</td>
 
                                                 <td>
                                                     {note.dateNote}

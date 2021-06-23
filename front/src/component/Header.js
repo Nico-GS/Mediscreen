@@ -27,9 +27,9 @@ class Header extends Component {
                         {/*<li className="nav-item">*/}
                         {/*    <Link className="nav-link" to="/rdv">RDV</Link>*/}
                         {/*</li>*/}
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/notes">Notes</Link>
-                        </li>
+                        {/*<li className="nav-item">*/}
+                        {/*    <Link className="nav-link" to="/notes">Notes</Link>*/}
+                        {/*</li>*/}
                     </ul>
                 </div>
             </nav>

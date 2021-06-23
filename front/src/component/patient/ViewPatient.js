@@ -117,21 +117,8 @@ class ViewPatient extends Component {
                 <br/><br/>
 
                 <div className="card col-md-12 container-fluid">
-                    <h3 className="text-center">View Patient Details</h3>
+                    <h3 className="text-center">{this.state.patient.firstName} {this.state.patient.lastName}</h3>
                     <div className="card-body">
-
-                        <div className="row">
-                            <label>Patient First Name : </label>
-                            <div className="font-weight-bold">
-                                {this.state.patient.firstName}
-                            </div>
-                        </div>
-                        <div className="row">
-                            <label>Patient Last Name : </label>
-                            <div className="font-weight-bold">
-                                {this.state.patient.lastName}
-                            </div>
-                        </div>
                         <div className="row">
                             <label> Date of Birth : </label>
                             <div className="font-weight-bold">

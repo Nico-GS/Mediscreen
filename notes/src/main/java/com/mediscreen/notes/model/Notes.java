@@ -34,7 +34,7 @@ public class Notes {
     private String patientFirstName;
 
     @Field(value = "note")
-    @NotBlank(message = "Note can't be blank")
+//    @NotBlank(message = "Note can't be blank")
     private String note;
 
     @Field(value = "dateNote")

@@ -28,10 +28,10 @@ public class NotesController {
     private Logger LOGGER = LoggerFactory.getLogger(NotesController.class);
 
     @Autowired
-    private NotesRepository notesRepository;
+    public NotesRepository notesRepository;
 
     @Autowired
-    private NotesServices notesServices;
+    public NotesServices notesServices;
 
     @GetMapping("/notes")
     public List<Notes> getNotes() {

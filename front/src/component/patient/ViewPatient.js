@@ -4,6 +4,7 @@ import NotesService from "../../service/NotesService";
 import ReportsService from "../../service/ReportsService";
 import moment from "moment";
 import '../../CSS/ViewPatient.css';
+import Popup from "reactjs-popup";
 
 
 class ViewPatient extends Component {
@@ -28,7 +29,7 @@ class ViewPatient extends Component {
         }
         this.addNotes = this.addNotes.bind(this);
         this.changeNote = this.changeNote.bind(this);
-        this.updateNote = this.updateNote.bind(this);
+        // this.updateNote = this.updateNote.bind(this);
     }
 
 
@@ -74,15 +75,16 @@ class ViewPatient extends Component {
         })
     }
 
-    updateNote = (event, note) => {
-        let updatedNote = {...note, note: event.target.value};
-        console.log(note);
-        NotesService.updateNotes(updatedNote, note.id).then(response => {
-            this.setState({note: updatedNote});
-            // this.setState({note: event.target.value});
-            this.handleRefresh();
-        })
-    }
+    // updateNote = (event, note) => {
+    //     let updatedNote = {...note, note: event.target.value};
+    //     console.log(note);
+    //     NotesService.updateNotes(updatedNote, note.id).then(response => {
+    //         console.log(updatedNote);
+    //         this.setState({note: updatedNote});
+    //         // this.setState({note: event.target.value});
+    //         this.handleRefresh();
+    //     })
+    // }
 
 
     handleRefresh = () => {
@@ -105,7 +107,8 @@ class ViewPatient extends Component {
             resultReport = response.data;
             console.log(resultReport);
             let result = resultReport.status;
-            console.log(result);
+            this.setState({theResult: result})
+            console.log(this.state.theResult);
             // window.alert(result);
         })
     }
@@ -163,6 +166,10 @@ class ViewPatient extends Component {
                         </div>
 
                         <div className="container-fluid">
+                            <Popup trigger={<button className="btn btn-sm btn-dark" onClick={this.getReports}>Reports</button>} position="right center">
+                                <div>{this.state.theResult}</div>
+                            </Popup>
+                            <br/>
                             <button className="btn btn-sm btn-dark" onClick={this.getReports}>Reports</button>
                         </div>
 
@@ -181,7 +188,9 @@ class ViewPatient extends Component {
                                     {
                                         this.state.notes.map(note =>
                                             <tr key={note.id}>
-                                                <td className="note" suppressContentEditableWarning={true} contentEditable onBlur={(e) => this.updateNote(e, note)}>{note.note}</td>
+                                                {/*<td className="note" suppressContentEditableWarning={true} contentEditable onBlur={(e) => this.updateNote(e, note)}>{note.note}</td>*/}
+                                                <td className="note" suppressContentEditableWarning={true}>{note.note}</td>
+
                                                 <td>
                                                     {note.dateNote}
                                                 </td>

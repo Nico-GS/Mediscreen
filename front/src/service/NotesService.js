@@ -16,7 +16,7 @@ class NotesService {
         return axios.post(URL_API_NOTES, note);
     }
 
-    updateNotes(notesId, note) {
+    updateNotes(note, notesId) {
         return axios.put(URL_API_NOTES + '/' + notesId, note);
     }
 

@@ -12,7 +12,7 @@ import java.util.Optional;
 public class NotesServices {
 
     @Autowired
-    private NotesRepository notesRepository;
+    public NotesRepository notesRepository;
 
     public Optional<Notes> getNotesById(String id) {
         return notesRepository.findById(id);

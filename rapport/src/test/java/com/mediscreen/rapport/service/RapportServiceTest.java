@@ -29,6 +29,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ContextConfiguration(classes = {RapportService.class})
 @ExtendWith(SpringExtension.class)
 public class RapportServiceTest {
+
     @MockBean
     private NoteProxy noteProxy;
 

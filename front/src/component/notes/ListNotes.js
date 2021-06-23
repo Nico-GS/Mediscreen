@@ -60,26 +60,22 @@ class ListNotes extends Component {
                     <table className ="table table-striped table-bordered tableau-list">
                         <thead>
                         <tr className="tab-name">
-                            <td>Patient ID</td>
                             <td>Last Name</td>
                             <td>First Name</td>
                             <td>Note</td>
-                            <td>Date Note</td>
                         </tr>
                         </thead>
                         <tbody>
                         {
                             this.state.notes.map(note =>
                                 <tr key = {note.id}>
-                                    <td>{note.patientId}</td>
                                     <td>{note.patientLastName}</td>
                                     <td>{note.patientFirstName}</td>
                                     <td>{note.note}</td>
-                                    <td>{note.dateNote}</td>
                                     <td>
                                         <button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>
                                         <button style={{marginLeft: "20px"}} onClick={ () => this.viewPatients(note.patientId)} className="btn btn-primary">View</button>
-                                        <button style={{marginLeft: "20px"}} onClick={ () => this.deleteNotes(note.patientId)} className="btn btn-danger">Delete</button>
+                                        <button style={{marginLeft: "20px"}} onClick={ () => this.deleteNotes(note.id)} className="btn btn-danger">Delete</button>
 
                                     </td>
                                 </tr>

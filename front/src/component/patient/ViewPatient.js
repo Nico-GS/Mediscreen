@@ -1,10 +1,10 @@
 import React, {Component} from "react";
+import {useHistory} from "react-router";
 import PatientService from "../../service/PatientService";
 import NotesService from "../../service/NotesService";
 import ReportsService from "../../service/ReportsService";
 import moment from "moment";
 import '../../CSS/ViewPatient.css';
-import Popup from "reactjs-popup";
 
 
 class ViewPatient extends Component {
@@ -68,6 +68,7 @@ class ViewPatient extends Component {
         this.setState({note: event.target.value});
     }
 
+
     deleteNote(id) {
         NotesService.deleteNotes(id).then(response => {
             this.setState({notes: this.state.notes.filter(note => note.id !== id)});
@@ -88,10 +89,6 @@ class ViewPatient extends Component {
 
 
     handleRefresh = () => {
-        this.setState({});
-    }
-
-    handleRefreshAdd = () => {
         this.setState({});
     }
 
@@ -161,10 +158,12 @@ class ViewPatient extends Component {
                         </div>
 
                         <div className="container-fluid">
-                            <button className="btn btn-sm btn-danger" onClick={this.getReports}>Click to request Report</button>
+                            <button className="btn btn-sm btn-danger" onClick={this.getReports}>Click to request
+                                Report
+                            </button>
                             <br/>
                             <div className="text-center">
-                               <h3>{this.state.theResult}</h3>
+                                <h3>{this.state.theResult}</h3>
                             </div>
                             <br/>
 
@@ -188,7 +187,10 @@ class ViewPatient extends Component {
                                             <tr key={note.id}>
                                                 {/*<td className="note" suppressContentEditableWarning={true} contentEditable onBlur={(e) => this.updateNote(e, note)}>{note.note}</td>*/}
                                                 <td className="note"
-                                                    suppressContentEditableWarning={true}>{note.note}</td>
+                                                    suppressContentEditableWarning={true} onClick={(e) => {
+                                                    e.preventDefault();
+                                                    window.location.href=`/add-notes/${note.id}`;
+                                                }}>{note.note}</td>
                                                 <td>
                                                     {note.dateNote}
                                                 </td>

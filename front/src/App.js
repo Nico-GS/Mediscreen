@@ -33,7 +33,6 @@ function App() {
                         <Route path="/rdv" exact component ={RendezVous}/>
                         <Route path="/notes" exact component ={ListNotes}/>
                         <Route path="/add-notes/" component = {CreateNotes}/>
-                        <Route path="/create-report/" component = {CreateReports}/>
                     </Switch>
                 </div>
                 <Footer />

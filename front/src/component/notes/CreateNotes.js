@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import PatientService from "../../service/PatientService";
 import NotesService from "../../service/NotesService";
+import moment from "moment";
 
 class CreateNotes extends Component {
 
@@ -13,7 +14,8 @@ class CreateNotes extends Component {
             firstName: '',
             lastName: '',
             note: '',
-            dateNote: '',
+            dateNote: moment().utc().format("YYYY-MM-DD hh:mm:ss"),
+            patients: []
         }
         this.changePatientIdHandler = this.changePatientIdHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -34,8 +36,10 @@ class CreateNotes extends Component {
                     lastName: notes.patientLastName,
                     note: notes.note,
                     dateNote: notes.dateNote,
-
                 });
+            });
+            PatientService.getPatient().then((response) => {
+                this.setState({patients: response.data});
             });
         }
     }
@@ -95,6 +99,10 @@ class CreateNotes extends Component {
         }
     }
 
+    getDate = () => {
+        this.setState({dateNote: new Date()})
+    }
+
     render() {
         return (
             <div>
@@ -107,30 +115,30 @@ class CreateNotes extends Component {
                             }
                             <div className = "card-body">
                                 <form>
-                                    <div className = "form-group">
+                                    <div className = "hide-form">
                                         <label>Patient ID : </label>
                                         <input placeholder="Patient ID" name="patientId" className="form-control"
-                                               value={this.state.patientId}/>
+                                               value={this.state.patientId} />
                                     </div>
-                                    <div className = "form-group">
+                                    <div className = "hide-form">
                                         <label>First Name:</label>
                                         <input placeholder="First Name" name="firstName" className="form-control"
                                                value={this.state.firstName} />
                                     </div>
-                                    <div className = "form-group">
+                                    <div className = "hide-form">
                                         <label>Last Name:</label>
                                         <input placeholder="Last Name" name="lastName" className="form-control"
                                                value={this.state.lastName}/>
                                     </div>
                                     <div className = "form-group">
                                         <label>Note : </label>
-                                        <input placeholder="Note" name="note" className="form-control"
+                                        <textarea placeholder="Note" name="note" className="form-control"
                                                value={this.state.note} onChange={this.changeNoteHandler}/>
                                     </div>
-                                    <div className = "form-group">
+                                    <div className = "hide-form">
                                         <label>Date Note : </label>
-                                        <input placeholder="yyyy-MM-dd" name="sex" className="form-control"
-                                               value={this.state.dateNote} onChange={this.changeDateNoteHandler}/>
+                                        <input placeholder="yyyy-MM-dd" name="dateNote" className="form-control"
+                                               value={this.getDate} />
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.saveOrUpdateNotes}>Save</button>

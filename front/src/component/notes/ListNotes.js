@@ -1,7 +1,7 @@
 import React, {Component} from "react";
-import PatientService from "../../service/PatientService";
 import '../../CSS/ListPatient.css';
 import NotesService from "../../service/NotesService";
+import PatientService from "../../service/PatientService";
 
 class ListNotes extends Component {
 
@@ -9,7 +9,8 @@ class ListNotes extends Component {
         super(props);
 
         this.state = {
-            notes: []
+            notes: [],
+            patients: []
         }
         this.addNotes = this.addNotes.bind(this);
         this.updateNotes = this.updateNotes.bind(this);
@@ -19,6 +20,9 @@ class ListNotes extends Component {
     componentDidMount() {
         NotesService.getNotes().then((response) => {
             this.setState({notes: response.data});
+        });
+        PatientService.getPatient().then((response) => {
+            this.setState({patients: response.data});
         });
     }
 
@@ -33,8 +37,8 @@ class ListNotes extends Component {
         this.props.history.push('/add-notes/_add');
     }
 
-    viewNotes(id) {
-        this.props.history.push(`/view-notes/${id}`);
+    viewPatients(id) {
+        this.props.history.push(`/view-patient/${id}`);
     }
 
     updateNotes(id) {
@@ -49,7 +53,7 @@ class ListNotes extends Component {
                 <h2 className="text-center">List Notes</h2>
                 <br/>
                 <div className ="container-fluid button-patient">
-                    <button className="btn btn-primary" onClick={this.addNotes}>Add Notes</button>
+                    {/*<button className="btn btn-primary" onClick={this.addNotes}>Add Notes</button>*/}
                 </div>
                 <br/><br/>
                 <div className ="row">
@@ -74,8 +78,8 @@ class ListNotes extends Component {
                                     <td>{note.dateNote}</td>
                                     <td>
                                         <button style={{marginLeft: "20px"}} onClick={ () => this.updateNotes(note.id)} className="btn btn-primary">Update</button>
-                                        <button style={{marginLeft: "20px"}} onClick={ () => this.viewNotes(note.id)} className="btn btn-primary">View</button>
-                                        <button style={{marginLeft: "20px"}} onClick={ () => this.deleteNotes(note.id)} className="btn btn-danger">Delete</button>
+                                        <button style={{marginLeft: "20px"}} onClick={ () => this.viewPatients(note.patientId)} className="btn btn-primary">View</button>
+                                        <button style={{marginLeft: "20px"}} onClick={ () => this.deleteNotes(note.patientId)} className="btn btn-danger">Delete</button>
 
                                     </td>
                                 </tr>
@@ -85,6 +89,7 @@ class ListNotes extends Component {
                     </table>
 
                 </div>
+
 
             </div>
         )

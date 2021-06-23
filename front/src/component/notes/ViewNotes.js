@@ -1,10 +1,8 @@
 import React, {Component} from "react";
-import PatientService from "../../service/PatientService";
 import NotesService from "../../service/NotesService";
-import ReportsService from "../../service/ReportsService";
 import moment from "moment";
 import '../../CSS/ViewPatient.css';
-import Popup from "reactjs-popup";
+
 
 
 class ViewNotes extends Component {

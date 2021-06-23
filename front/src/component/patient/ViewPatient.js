@@ -189,7 +189,6 @@ class ViewPatient extends Component {
                                                 {/*<td className="note" suppressContentEditableWarning={true} contentEditable onBlur={(e) => this.updateNote(e, note)}>{note.note}</td>*/}
                                                 <td className="note"
                                                     suppressContentEditableWarning={true}>{note.note}</td>
-
                                                 <td>
                                                     {note.dateNote}
                                                 </td>

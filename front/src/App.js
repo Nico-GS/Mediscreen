@@ -12,6 +12,7 @@ import Footer from "./component/Footer";
 import ListNotes from "./component/notes/ListNotes";
 import CreateNotes from "./component/notes/CreateNotes";
 import CreateReports from "./component/reports/CreateReports";
+import ViewNotes from "./component/notes/ViewNotes";
 
 
 
@@ -27,6 +28,8 @@ function App() {
                         <Route path="/patients" component = {ListPatientComponent}/>
                         <Route path="/add-patient/:id" component = {CreatePatient}/>
                         <Route path="/view-patient/:id" component = {ViewPatient}/>
+                        <Route path="/view-notes/:id" component = {ViewNotes} />
+                        <Route path="/add-notes/:id" component = {CreateNotes} />
                         <Route path="/rdv" exact component ={RendezVous}/>
                         <Route path="/notes" exact component ={ListNotes}/>
                         <Route path="/add-notes/" component = {CreateNotes}/>

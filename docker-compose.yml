@@ -1,0 +1,81 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    volumes:
+      - mysql_db_data_container:/var/lib/mysql
+
+  mongodb:
+    image: mongo:4
+    container_name: mongodb
+#    environment:
+#      MONGO_INITDB_ROOT_USERNAME: root
+#      MONGO_INITDB_ROOT_PASSWORD: root
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+  patient:
+    depends_on:
+      - mysql
+    image: ms-patient
+    container_name: ms-patient
+    ports:
+      - "8081:8081"
+    networks:
+      - default
+    environment:
+      - "spring_datasource_username=root"
+      - "spring_datasource_password=root"
+      - "SPRING_DATASOURCE_URL=jdbc:mysql://mysql/mediscreen?serverTimezone=UTC"
+      - "mediscreen_front_cross_origin=http://localhost"
+      - "rapport_cross=http://ms-rapport:8083"
+
+  notes:
+    depends_on:
+      - mongodb
+    image: ms-notes
+    container_name: ms-notes
+    ports:
+      - "8082:8082"
+    networks:
+      - default
+    environment:
+      - "spring_data_mongodb_host=mongodb"
+      - "mediscreen_front_cross_origin=http://localhost"
+      - "rapport_cross=http://ms-rapport:8083"
+
+  rapport:
+    image: ms-rapport
+    container_name: ms-rapport
+    ports:
+      - "8083:8083"
+    networks:
+      - default
+    environment:
+      - "mediscreen_front_cross_origin=http://localhost"
+      - "patient_url_cross=http://ms-patient:8081"
+      - "notes_url_cross=http://ms-notes:8082"
+
+  front:
+    depends_on:
+      - patient
+      - notes
+      - rapport
+    image: front
+    container_name: front
+    ports:
+      - "80:80"
+    networks:
+      - default
+
+volumes:
+  mysql_db_data_container:
+  mongodb_data_container:

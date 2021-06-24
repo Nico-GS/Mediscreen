@@ -21,7 +21,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"${mediscreen.front.cross.origin}", "${rapport.cross}"})
 public class NotesController {
 
 

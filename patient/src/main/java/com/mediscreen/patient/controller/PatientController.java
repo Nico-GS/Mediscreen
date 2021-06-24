@@ -22,7 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = {"${mediscreen.front.cross.origin}", "${rapport.cross}"})
 @RequestMapping("/api/")
 public class PatientController {
 

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
-@FeignClient(name = "notes", url = "localhost:8082")
+@FeignClient(name = "ms-notes", url = "${notes.url.cross}")
 public interface NoteProxy {
 
     @GetMapping(value = "/api/notes/findByLastAndFirstName")

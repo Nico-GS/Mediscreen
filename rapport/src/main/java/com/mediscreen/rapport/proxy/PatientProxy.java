@@ -2,11 +2,12 @@ package com.mediscreen.rapport.proxy;
 
 import com.mediscreen.rapport.model.Patient;
 import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(name = "patient", url = "localhost:8081")
+@FeignClient(name = "ms-patient", url = "${patient.url.cross}")
 public interface PatientProxy {
 
     /**

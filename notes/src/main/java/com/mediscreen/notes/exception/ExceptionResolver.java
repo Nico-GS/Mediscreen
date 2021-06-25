@@ -1,4 +1,4 @@
-package com.mediscreen.patient.exception;
+package com.mediscreen.notes.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

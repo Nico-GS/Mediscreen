@@ -34,12 +34,20 @@ public class PatientController {
     @Autowired
     public PatientService patientService;
 
+    /**
+     * Home Patient
+     * @return Hello !
+     */
     @GetMapping("/")
     public String homePatient() {
         LOGGER.info("Home OK");
         return "Hello !";
     }
 
+    /**
+     * Get list of all patients
+     * @return list all patients
+     */
     @ApiOperation(value = "Get list of all patients")
     @GetMapping("/patient")
     public List<Patient> getPatient() {
@@ -47,6 +55,12 @@ public class PatientController {
         return patientRepository.findAll();
     }
 
+    /**
+     * Get a patient with ID
+     * @param id the patient ID
+     * @return the patient
+     */
+    @ApiOperation(value = "Get a patient by ID")
     @GetMapping("/patient/{id}")
     public ResponseEntity <Patient> getPatientById(@PathVariable int id) {
         LOGGER.info("GET Patient by ID OK : " + id);
@@ -55,6 +69,13 @@ public class PatientController {
         return ResponseEntity.ok(patient);
     }
 
+    /**
+     * Get a patient with last & first name
+     * @param lastName the patient lastname
+     * @param firstName the patient firstname
+     * @return the patient
+     */
+    @ApiOperation(value = "Get a patient with last and first name")
     @GetMapping("/patient/getPatientLastAndFirst")
     public ResponseEntity<Patient> getPatientByLastAndFirstName (@RequestParam("last") String lastName, @RequestParam("first") String firstName) {
         LOGGER.info("GET Patient by Last & First Name OK : {} {}   ", lastName, firstName);
@@ -62,6 +83,11 @@ public class PatientController {
         return new ResponseEntity<>(patient, HttpStatus.OK);
     }
 
+    /**
+     * Create a new patient with : lastname, firstname, address, sex & date of birth
+     * @param patient the patient to create
+     * @return Bad Request if patient already exist with ID | 200 OK if patient created
+     */
     @ApiOperation(value = "Add a Patient with information : LastName, FirstName, Address, Sex, Date of Birth")
     @PostMapping("/patient")
     public ResponseEntity addPatient(@RequestBody @Valid @Validated Patient patient) {
@@ -74,6 +100,12 @@ public class PatientController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    /**
+     * Update a patient with ID
+     * @param patients the patient to update
+     * @param id the patient ID
+     * @return Bad Request if patient not found with ID | 200 OK if patient updated
+     */
     @ApiOperation(value = "Update a Patient with information : LastName, FirstName, Address, Sex, Date of Birth")
     @PutMapping("/patient/{id}")
     public ResponseEntity<Patient> updatePatient(@RequestBody @Valid @Validated Patient patients, @PathVariable int id) {
@@ -90,6 +122,11 @@ public class PatientController {
         return ResponseEntity.ok(updatePatient);
     }
 
+    /**
+     * Delete a patient with ID
+     * @param id the patient ID
+     * @return Bad Request if patient not found with ID | 200 OK if patient deleted
+     */
     @ApiOperation(value = "Delete a Patient by ID")
     @DeleteMapping("/patient/{id}")
     public ResponseEntity<Map<String, Boolean>> deletePatient(@PathVariable("id") int id) {

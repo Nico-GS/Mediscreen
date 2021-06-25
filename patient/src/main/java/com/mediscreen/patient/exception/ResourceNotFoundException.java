@@ -8,6 +8,10 @@ public class ResourceNotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Exception if patient not found in database
+     * @param message
+     */
     public ResourceNotFoundException(String message) {
         super(message);
     }

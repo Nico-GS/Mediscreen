@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
 import PatientService from "../../service/PatientService";
 
 
@@ -23,9 +23,11 @@ class CreatePatient extends Component {
         this.changeAddressHandler = this.changeAddressHandler.bind(this);
         this.changePhoneNumberHandler = this.changePhoneNumberHandler.bind(this);
         this.saveOrUpdatePatient = this.saveOrUpdatePatient.bind(this);
+
     }
 
     componentDidMount() {
+
         if (this.state.id === '_add') {
             return
         } else {
@@ -54,7 +56,6 @@ class CreatePatient extends Component {
             address: this.state.address,
             phoneNumber: this.state.phoneNumber
         };
-        console.log("Patient =>" + JSON.stringify(patient));
 
         if (this.state.id === '_add') {
             PatientService.createPatient(patient).then(response => {
@@ -90,6 +91,7 @@ class CreatePatient extends Component {
     changePhoneNumberHandler = (event) => {
         this.setState({phoneNumber: event.target.value});
     }
+
 
     cancel() {
         this.props.history.push('/patients')
@@ -128,7 +130,7 @@ class CreatePatient extends Component {
                                     </div>
                                     <div className = "form-group">
                                         <label>Date of Birth:</label>
-                                        <input placeholder="Date of Birth : XXXX-XX-XX" name="dateOfBirth" className="form-control"
+                                        <input dataformatas={"DD-MM-YYYY"} placeholder="Date of Birth : XXXX-XX-XX" name="dateOfBirth" className="form-control"
                                                value={this.state.dateOfBirth} onChange={this.changeDateOfBirthHandler}/>
                                     </div>
                                     <div className = "form-group">

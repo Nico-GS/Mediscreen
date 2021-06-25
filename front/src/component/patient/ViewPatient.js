@@ -1,9 +1,7 @@
 import React, {Component} from "react";
-import {useHistory} from "react-router";
 import PatientService from "../../service/PatientService";
 import NotesService from "../../service/NotesService";
 import ReportsService from "../../service/ReportsService";
-import moment from "moment";
 import '../../CSS/ViewPatient.css';
 
 
@@ -12,7 +10,7 @@ class ViewPatient extends Component {
 
     constructor(props) {
         super(props);
-        var moment = require('moment-timezone');
+        const moment = require('moment-timezone');
 
         this.state = {
             id: this.props.match.params.id,
@@ -74,22 +72,9 @@ class ViewPatient extends Component {
         })
     }
 
-    // updateNote = (event, note) => {
-    //     let updatedNote = {...note, note: event.target.value};
-    //     console.log(note);
-    //     NotesService.updateNotes(updatedNote, note.id).then(response => {
-    //         console.log(updatedNote);
-    //         this.setState({note: updatedNote});
-    //         // this.setState({note: event.target.value});
-    //         this.handleRefresh();
-    //     })
-    // }
-
-
     handleRefresh = () => {
         this.setState({});
     }
-
 
     getDate = () => {
         this.setState({dateNote: new Date()})
@@ -100,10 +85,8 @@ class ViewPatient extends Component {
         let resultReport;
         ReportsService.getReportsByLastAndFirstName(this.state.patient.firstName, this.state.patient.lastName).then(response => {
             resultReport = response.data;
-            console.log(resultReport);
             let result = resultReport.status;
             this.setState({theResult: result})
-            console.log(this.state.theResult);
         })
     }
 

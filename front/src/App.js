@@ -11,13 +11,11 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 import ListNotes from "./component/notes/ListNotes";
 import CreateNotes from "./component/notes/CreateNotes";
-import CreateReports from "./component/reports/CreateReports";
 import ViewNotes from "./component/notes/ViewNotes";
 
 
-
-
 function App() {
+
     return (
         <div className="App">
             <BrowserRouter>

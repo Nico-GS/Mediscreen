@@ -25,8 +25,12 @@ class ListPatientComponent extends Component {
     deletePatient(id) {
         PatientService.deletePatient(id).then (response => {
             this.setState({patients: this.state.patients.filter(patient => patient.id !== id)});
-            this.props.history.push('/');
+            window.location.href="/";
         });
+    }
+
+    handleRefresh = () => {
+        this.setState({});
     }
 
     addPatient() {

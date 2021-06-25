@@ -51,7 +51,7 @@ public class RapportServiceTest {
     @Test
     public void testCalculRisk() {
         Patient patient = mock(Patient.class);
-        when(patient.getSex()).thenReturn("foo");
+        when(patient.getSex()).thenReturn("sex");
         when(patient.getDateOfBirth()).thenReturn(LocalDate.ofEpochDay(1L));
         assertEquals(Status.None, this.rapportService.calculRisk(patient, new ArrayList<Note>()));
         verify(patient).getDateOfBirth();
@@ -61,11 +61,11 @@ public class RapportServiceTest {
     @Test
     public void testCalculNbDeclencheurs() {
         Note note = mock(Note.class);
-        when(note.getNote()).thenReturn("foo");
+        when(note.getNote()).thenReturn("sex");
 
         ArrayList<Note> noteList = new ArrayList<Note>();
         noteList.add(note);
-        noteList.add(new Note(123, "Note"));
+        noteList.add(new Note(1, "Note"));
         assertEquals(0L, this.rapportService.calculNbDeclencheurs(noteList));
         verify(note).getNote();
     }
@@ -74,13 +74,13 @@ public class RapportServiceTest {
     @Test
     public void testGetRapportByLastAndFirstName() {
         Patient patient = mock(Patient.class);
-        when(patient.getFirstName()).thenReturn("foo");
-        when(patient.getLastName()).thenReturn("foo");
-        when(patient.getSex()).thenReturn("foo");
+        when(patient.getFirstName()).thenReturn("Nicolas");
+        when(patient.getLastName()).thenReturn("Gros");
+        when(patient.getSex()).thenReturn("M");
         when(patient.getDateOfBirth()).thenReturn(LocalDate.ofEpochDay(1L));
         when(this.patientProxy.getPatientByLastAndFirstName(anyString(), anyString())).thenReturn(patient);
         Note note = mock(Note.class);
-        when(note.getNote()).thenReturn("foo");
+        when(note.getNote()).thenReturn("test");
 
         ArrayList<Note> noteList = new ArrayList<Note>();
         noteList.add(note);
@@ -89,9 +89,9 @@ public class RapportServiceTest {
         Rapport actualRapportByLastAndFirstName = this.rapportService.getRapportByLastAndFirstName("Doe", "Jane");
         assertEquals(51L, actualRapportByLastAndFirstName.getAge());
         assertEquals(Status.None, actualRapportByLastAndFirstName.getStatus());
-        assertEquals("foo", actualRapportByLastAndFirstName.getSex());
-        assertEquals("foo", actualRapportByLastAndFirstName.getLastName());
-        assertEquals("foo", actualRapportByLastAndFirstName.getFirstName());
+        assertEquals("M", actualRapportByLastAndFirstName.getSex());
+        assertEquals("Gros", actualRapportByLastAndFirstName.getLastName());
+        assertEquals("Nicolas", actualRapportByLastAndFirstName.getFirstName());
         verify(note).getNote();
         verify(this.noteProxy).getNotesPatientByLastAndFirstName(anyString(), anyString());
         verify(patient, times(2)).getDateOfBirth();
@@ -103,16 +103,16 @@ public class RapportServiceTest {
 
     @Test
     public void testGetRapportById() {
-        Patient patient = new Patient(1, "Doe", "Jane", LocalDate.ofEpochDay(1L), "42 Main St", 1L, "Sex");
-        patient.setFirstName("First Name");
+        Patient patient = new Patient(1, "Gros", "Nicolas", LocalDate.ofEpochDay(1L), "42 Main St", 1L, "M");
+        patient.setFirstName("Nicolas");
         when(this.patientProxy.getPatientById(anyInt())).thenReturn(patient);
         when(this.noteProxy.getNotesPatientByLastAndFirstName(anyString(), anyString())).thenReturn(new ArrayList<Note>());
         Rapport actualRapportById = this.rapportService.getRapportById(1);
         assertEquals(51L, actualRapportById.getAge());
         assertEquals(Status.None, actualRapportById.getStatus());
-        assertEquals("Sex", actualRapportById.getSex());
-        assertEquals("Doe", actualRapportById.getLastName());
-        assertEquals("First Name", actualRapportById.getFirstName());
+        assertEquals("M", actualRapportById.getSex());
+        assertEquals("Gros", actualRapportById.getLastName());
+        assertEquals("Nicolas", actualRapportById.getFirstName());
         verify(this.noteProxy).getNotesPatientByLastAndFirstName(anyString(), anyString());
         verify(this.patientProxy).getPatientById(anyInt());
     }

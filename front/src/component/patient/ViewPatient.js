@@ -24,7 +24,9 @@ class ViewPatient extends Component {
             note: '',
             result: [],
             theResult: '',
-            dateNote: moment().utc().format("YYYY-MM-DD hh:mm:ss"),
+            dateToStore: "26-05-2021 21:13",
+            dateNote: moment().zone(10).format("DD/MM/YYYY hh:mm:ss"),
+
 
         }
         this.addNotes = this.addNotes.bind(this);

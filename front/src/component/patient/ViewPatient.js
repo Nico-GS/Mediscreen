@@ -12,6 +12,7 @@ class ViewPatient extends Component {
 
     constructor(props) {
         super(props);
+        var moment = require('moment-timezone');
 
         this.state = {
             id: this.props.match.params.id,
@@ -25,8 +26,7 @@ class ViewPatient extends Component {
             result: [],
             theResult: '',
             dateToStore: "26-05-2021 21:13",
-            dateNote: moment().zone(10).format("DD/MM/YYYY hh:mm:ss"),
-
+            dateNote: moment().tz("Etc/Paris").format("DD/MM/YYYY HH:mm:ss"),
 
         }
         this.addNotes = this.addNotes.bind(this);

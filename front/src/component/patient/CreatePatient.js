@@ -1,5 +1,6 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import PatientService from "../../service/PatientService";
+
 
 class CreatePatient extends Component {
 
@@ -13,7 +14,7 @@ class CreatePatient extends Component {
             dateOfBirth: '',
             sex: '',
             address: '',
-            phoneNumber: ''
+            phoneNumber: '',
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -39,6 +40,7 @@ class CreatePatient extends Component {
                     phoneNumber: patient.phoneNumber
                 });
             });
+
         }
     }
 
@@ -100,6 +102,7 @@ class CreatePatient extends Component {
             return <h3 className="text-center">Update Patient</h3>
         }
     }
+
 
     render() {
         return (

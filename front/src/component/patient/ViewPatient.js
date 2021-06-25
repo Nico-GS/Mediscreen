@@ -29,7 +29,6 @@ class ViewPatient extends Component {
         }
         this.addNotes = this.addNotes.bind(this);
         this.changeNote = this.changeNote.bind(this);
-        // this.updateNote = this.updateNote.bind(this);
     }
 
 
@@ -40,9 +39,6 @@ class ViewPatient extends Component {
         NotesService.getNotesById(this.state.notes).then(response => {
             this.setState({notes: response.data});
         })
-        // ReportsService.getReportsById(this.state.id, this.state.result).then(response => {
-        //     this.setState({results: response.data});
-        // })
     }
 
 
@@ -106,7 +102,6 @@ class ViewPatient extends Component {
             let result = resultReport.status;
             this.setState({theResult: result})
             console.log(this.state.theResult);
-            // window.alert(result);
         })
     }
 

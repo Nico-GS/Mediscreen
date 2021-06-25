@@ -22,7 +22,7 @@ import java.util.Map;
 public class NotesController {
 
 
-    private Logger LOGGER = LoggerFactory.getLogger(NotesController.class);
+    private final Logger LOGGER = LoggerFactory.getLogger(NotesController.class);
 
     @Autowired
     public NotesRepository notesRepository;
@@ -30,12 +30,21 @@ public class NotesController {
     @Autowired
     public NotesServices notesServices;
 
+    /**
+     * Get all notes
+     * @return notes
+     */
     @GetMapping("/notes")
     public List<Notes> getNotes() {
         LOGGER.info("GET Notes OK");
         return notesRepository.findAll();
     }
 
+    /**
+     * Return a note by ID
+     * @param id the note ID
+     * @return the note
+     */
     @GetMapping("/notes/{id}")
     public ResponseEntity<Notes> getNotesById(@PathVariable String id) {
         LOGGER.info("GET Notes by ID OK : " + id);
@@ -44,6 +53,12 @@ public class NotesController {
         return ResponseEntity.ok(notes);
     }
 
+    /**
+     * Retrieve a note by patient last and first name
+     * @param patientLastName the patient lastname
+     * @param patientFirstName the patient firstname
+     * @return the note by first & last name
+     */
     @GetMapping("/notes/findByLastAndFirstName")
     public ResponseEntity getNotesByFirstAndLastName(@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName) {
         LOGGER.info("GET Notes patient by first and last name OK : {} - {} : ", patientLastName, patientFirstName);
@@ -51,6 +66,11 @@ public class NotesController {
         return ResponseEntity.ok(notes);
     }
 
+    /**
+     * Create a note
+     * @param notes the note to create
+     * @return bad request if note already exist with ID | 200 OK if note created
+     */
     @PostMapping("/notes")
     public ResponseEntity addNotes(@RequestBody Notes notes) {
         if (notesServices.getNotesById(notes.getId()).isPresent()) {
@@ -62,6 +82,12 @@ public class NotesController {
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
+    /**
+     * Update a note
+     * @param id the note to update
+     * @param notes the note to update
+     * @return 200 OK if note update success | Bad Request if note not found with ID
+     */
     @PutMapping(value = "/notes/{id}")
     public ResponseEntity<Notes> updateNotes(@PathVariable String id, @RequestBody Notes notes) {
         Notes note = notesRepository.findById(id)
@@ -74,6 +100,11 @@ public class NotesController {
         return ResponseEntity.ok(updateNotes);
     }
 
+    /**
+     * Delete a note by ID
+     * @param id the note ID
+     * @return 200 OK if note deleted | Bad Request if note don't exist with ID
+     */
     @DeleteMapping("/notes/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteNotes(@PathVariable("id") String id) {
         Notes note = notesRepository.findById(id)

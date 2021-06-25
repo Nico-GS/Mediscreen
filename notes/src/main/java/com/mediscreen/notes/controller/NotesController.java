@@ -4,6 +4,7 @@ import com.mediscreen.notes.exception.ResourceNotFoundException;
 import com.mediscreen.notes.model.Notes;
 import com.mediscreen.notes.repository.NotesRepository;
 import com.mediscreen.notes.service.NotesServices;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +35,7 @@ public class NotesController {
      * Get all notes
      * @return notes
      */
+    @ApiOperation(value = "Get all notes")
     @GetMapping("/notes")
     public List<Notes> getNotes() {
         LOGGER.info("GET Notes OK");
@@ -45,6 +47,7 @@ public class NotesController {
      * @param id the note ID
      * @return the note
      */
+    @ApiOperation(value = "Get notes by ID")
     @GetMapping("/notes/{id}")
     public ResponseEntity<Notes> getNotesById(@PathVariable String id) {
         LOGGER.info("GET Notes by ID OK : " + id);
@@ -59,6 +62,7 @@ public class NotesController {
      * @param patientFirstName the patient firstname
      * @return the note by first & last name
      */
+    @ApiOperation(value = "Get notes by patient last & first name")
     @GetMapping("/notes/findByLastAndFirstName")
     public ResponseEntity getNotesByFirstAndLastName(@RequestParam("lastName") String patientLastName, @RequestParam("firstName") String patientFirstName) {
         LOGGER.info("GET Notes patient by first and last name OK : {} - {} : ", patientLastName, patientFirstName);
@@ -71,6 +75,7 @@ public class NotesController {
      * @param notes the note to create
      * @return bad request if note already exist with ID | 200 OK if note created
      */
+    @ApiOperation(value = "Create a new note")
     @PostMapping("/notes")
     public ResponseEntity addNotes(@RequestBody Notes notes) {
         if (notesServices.getNotesById(notes.getId()).isPresent()) {
@@ -88,6 +93,7 @@ public class NotesController {
      * @param notes the note to update
      * @return 200 OK if note update success | Bad Request if note not found with ID
      */
+    @ApiOperation(value = "Update a note by ID")
     @PutMapping(value = "/notes/{id}")
     public ResponseEntity<Notes> updateNotes(@PathVariable String id, @RequestBody Notes notes) {
         Notes note = notesRepository.findById(id)
@@ -105,6 +111,7 @@ public class NotesController {
      * @param id the note ID
      * @return 200 OK if note deleted | Bad Request if note don't exist with ID
      */
+    @ApiOperation(value = "Delete a note by ID")
     @DeleteMapping("/notes/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteNotes(@PathVariable("id") String id) {
         Notes note = notesRepository.findById(id)

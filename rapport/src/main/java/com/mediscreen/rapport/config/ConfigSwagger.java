@@ -1,4 +1,4 @@
-package com.mediscreen.patient.configuration;
+package com.mediscreen.rapport.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

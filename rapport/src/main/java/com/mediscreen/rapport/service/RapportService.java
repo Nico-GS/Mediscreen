@@ -41,10 +41,21 @@ public class RapportService {
         this.declencheurs = declencheurs;
     }
 
+    /**
+     * Get the age of the patient
+     * @param patient the patient
+     * @return age of patient
+     */
     public long getPatientAge (Patient patient) {
         return ChronoUnit.YEARS.between(patient.getDateOfBirth(), LocalDate.now());
     }
 
+    /**
+     * Calcul the risk of the patient with his notes & declencheurs
+     * @param patient the patient to calculate the risk
+     * @param notes the note of the patient
+     * @return the risk of the patient : None, EarlyOnset, InDanger, Borderline
+     */
     public Status calculRisk (Patient patient, List<Note> notes) {
         long nbDeclencheurs = calculNbDeclencheurs(notes);
         long age = getPatientAge(patient);
@@ -69,6 +80,11 @@ public class RapportService {
         return status;
     }
 
+    /**
+     * Read the file "declencheurs" with the note of the patient
+     * @param notes the note of the patient
+     * @return the nbdeclencheurs
+     */
     public long calculNbDeclencheurs (List<Note> notes) {
 
         String noteToStream = notes.stream()
@@ -85,6 +101,12 @@ public class RapportService {
 
     }
 
+    /**
+     * Get the rapport of a patient with last and first name
+     * @param lastName the patient last name
+     * @param firstName the patient first name
+     * @return the patient report
+     */
     public Rapport getRapportByLastAndFirstName (String lastName, String firstName) {
         Patient patient = patientProxy.getPatientByLastAndFirstName(lastName, firstName);
         List<Note> notes = noteProxy.getNotesPatientByLastAndFirstName(lastName, firstName);
@@ -93,6 +115,11 @@ public class RapportService {
         return rapport;
     }
 
+    /**
+     * Get a report with patient ID
+     * @param id the patient ID
+     * @return the report found
+     */
     public Rapport getRapportById (int id) {
         Patient patient = patientProxy.getPatientById(id);
         List<Note> notes = noteProxy.getNotesPatientByLastAndFirstName(patient.getLastName(), patient.getFirstName());

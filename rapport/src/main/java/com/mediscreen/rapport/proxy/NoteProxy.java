@@ -10,6 +10,12 @@ import java.util.List;
 @FeignClient(name = "ms-notes", url = "${notes.url.cross}")
 public interface NoteProxy {
 
+    /**
+     * Request GET to ms-notes, find note by last and first name
+     * @param lastName the patient last name
+     * @param firstName the patient first name
+     * @return the note
+     */
     @GetMapping(value = "/api/notes/findByLastAndFirstName")
     List<Note> getNotesPatientByLastAndFirstName(@RequestParam("lastName") String lastName, @RequestParam("firstName") String firstName);
 

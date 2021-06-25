@@ -15,6 +15,8 @@ class CreatePatient extends Component {
             sex: '',
             address: '',
             phoneNumber: '',
+            error: '',
+            validationMessage: "error"
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -23,8 +25,8 @@ class CreatePatient extends Component {
         this.changeAddressHandler = this.changeAddressHandler.bind(this);
         this.changePhoneNumberHandler = this.changePhoneNumberHandler.bind(this);
         this.saveOrUpdatePatient = this.saveOrUpdatePatient.bind(this);
-
     }
+
 
     componentDidMount() {
 
@@ -68,6 +70,7 @@ class CreatePatient extends Component {
         }
     }
 
+
     changeFirstNameHandler = (event) => {
         this.setState({firstName: event.target.value});
     }
@@ -77,7 +80,11 @@ class CreatePatient extends Component {
     }
 
     changeDateOfBirthHandler = (event) => {
-        this.setState({dateOfBirth: event.target.value});
+        const target = event.target;
+        this.setState({
+            dateOfBirth: event.target.value,
+            error: target.validationMessage
+        });
     }
 
     changeSexHandler = (event) => {
@@ -98,7 +105,7 @@ class CreatePatient extends Component {
     }
 
     getTitle() {
-        if(this.state.id === '_add') {
+        if (this.state.id === '_add') {
             return <h3 className="text-center">Add Patient</h3>
         } else {
             return <h3 className="text-center">Update Patient</h3>
@@ -108,49 +115,66 @@ class CreatePatient extends Component {
 
     render() {
         return (
+
             <div>
+
                 <br/><br/>
-                <div className = "container">
-                    <div className = "row">
-                        <div className ="card col-md-6 offset-md-3 offset-md-3">
+                <div className="container">
+                    <div className="row">
+                        <div className="card col-md-6 offset-md-3 offset-md-3">
                             {
                                 this.getTitle()
                             }
-                            <div className = "card-body">
+                            <div className="card-body">
                                 <form>
-                                    <div className = "form-group">
+                                    <div className="form-group">
                                         <label>First Name:</label>
-                                        <input placeholder="First Name" name="firstName" className="form-control"
+                                        <input name="firstName" className="form-control"
                                                value={this.state.firstName} onChange={this.changeFirstNameHandler}/>
                                     </div>
-                                    <div className = "form-group">
+                                    <div className="form-group">
                                         <label>Last Name:</label>
-                                        <input placeholder="Last Name" name="lastName" className="form-control"
+                                        <input name="lastName" className="form-control"
                                                value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                                     </div>
-                                    <div className = "form-group">
-                                        <label>Date of Birth:</label>
-                                        <input dataformatas={"DD-MM-YYYY"} placeholder="Date of Birth : XXXX-XX-XX" name="dateOfBirth" className="form-control"
-                                               value={this.state.dateOfBirth} onChange={this.changeDateOfBirthHandler}/>
-                                    </div>
-                                    <div className = "form-group">
+
+                                    <form onSubmit={this.handleSubmit} noValidate>
+                                        <div className="form-group react-datepicker">
+                                            <label htmlFor="username">Birth</label>
+                                            <input
+                                                value={this.state.username}
+                                                onChange={this.changeDateOfBirthHandler}
+                                                placeholder="YYYY-MM-DD"
+                                                pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
+                                                className="form-control" />
+                                            <div className="invalid-feedback d-block">
+                                                {this.state.error}
+                                            </div>
+                                        </div>
+                                    </form>
+
+
+
+                                    <div className="form-group">
                                         <label>Sex:</label>
                                         <input placeholder="M or F" name="sex" className="form-control"
                                                value={this.state.sex} onChange={this.changeSexHandler}/>
                                     </div>
-                                    <div className = "form-group">
+                                    <div className="form-group">
                                         <label>Address:</label>
-                                        <input  name="address" className="form-control"
+                                        <input name="address" className="form-control"
                                                value={this.state.address} onChange={this.changeAddressHandler}/>
                                     </div>
-                                    <div className = "form-group">
+                                    <div className="form-group">
                                         <label>Phone Number:</label>
                                         <input placeholder="XXXXXXXXXX" name="emailId" className="form-control"
                                                value={this.state.phoneNumber} onChange={this.changePhoneNumberHandler}/>
                                     </div>
 
                                     <button className="btn btn-success" onClick={this.saveOrUpdatePatient}>Save</button>
-                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
+                                    <button className="btn btn-danger" onClick={this.cancel.bind(this)}
+                                            style={{marginLeft: "10px"}}>Cancel
+                                    </button>
                                 </form>
                             </div>
                         </div>

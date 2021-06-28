@@ -51,7 +51,7 @@ public class PatientController {
     @ApiOperation(value = "Get list of all patients")
     @GetMapping("/patient")
     public List<Patient> getPatient() {
-        LOGGER.info("GET Patient OK");
+        LOGGER.info("GET all Patients");
         return patientRepository.findAll();
     }
 
@@ -63,9 +63,9 @@ public class PatientController {
     @ApiOperation(value = "Get a patient by ID")
     @GetMapping("/patient/{id}")
     public ResponseEntity <Patient> getPatientById(@PathVariable int id) {
-        LOGGER.info("GET Patient by ID OK : " + id);
+        LOGGER.info("GET Patient by ID : " + id);
         Patient patient = patientRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Patient don't exist with ID : " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("Patient not found with ID : " + id));
         return ResponseEntity.ok(patient);
     }
 
@@ -78,7 +78,7 @@ public class PatientController {
     @ApiOperation(value = "Get a patient with last and first name")
     @GetMapping("/patient/getPatientLastAndFirst")
     public ResponseEntity<Patient> getPatientByLastAndFirstName (@RequestParam("last") String lastName, @RequestParam("first") String firstName) {
-        LOGGER.info("GET Patient by Last & First Name OK : {} {}   ", lastName, firstName);
+        LOGGER.info("GET Patient by Last & First Name : {} {}   ", lastName, firstName);
         Patient patient = patientService.findPatientByLastAndFirstName(lastName, firstName);
         return new ResponseEntity<>(patient, HttpStatus.OK);
     }

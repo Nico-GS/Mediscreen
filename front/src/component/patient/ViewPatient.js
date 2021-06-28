@@ -96,7 +96,7 @@ class ViewPatient extends Component {
             <div>
                 <br/><br/>
 
-                <div className="card col-md-12 container-fluid">
+                <div className="card col-md-12 container-fluid boxPatient">
                     <h3 className="text-center">{this.state.patient.firstName} {this.state.patient.lastName}</h3>
                     <div className="card-body">
                         <div className="row">
@@ -150,7 +150,6 @@ class ViewPatient extends Component {
                                     {
                                         this.state.notes.map(note =>
                                             <tr key={note.id}>
-                                                {/*<td className="note" suppressContentEditableWarning={true} contentEditable onBlur={(e) => this.updateNote(e, note)}>{note.note}</td>*/}
                                                 <td className="note"
                                                     suppressContentEditableWarning={true} onClick={(e) => {
                                                     e.preventDefault();
@@ -202,11 +201,11 @@ class ViewPatient extends Component {
                                                value={this.getDate}/>
                                     </div>
                                     <div className="form-group">
-                                        <label>Notes : </label>
+                                        <label>Notes</label>
                                         <textarea name="note" className="form-control"
                                                   value={this.state.note} onChange={this.changeNote}/>
                                     </div>
-                                    <button className="btn btn-primary btn-sm" onClick={this.addNotes}>Add Notes
+                                    <button className="btn btn-primary btn-sm" onClick={this.addNotes}>Save
                                     </button>
                                 </form>
                             </div>

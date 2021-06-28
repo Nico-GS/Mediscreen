@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Link} from "react-router-dom";
+import '../CSS/Home.css';
 
 class Header extends Component {
 
@@ -24,12 +25,6 @@ class Header extends Component {
                         <li className="nav-item">
                             <Link className="nav-link" to="/">Home</Link>
                         </li>
-                        {/*<li className="nav-item">*/}
-                        {/*    <Link className="nav-link" to="/rdv">RDV</Link>*/}
-                        {/*</li>*/}
-                        {/*<li className="nav-item">*/}
-                        {/*    <Link className="nav-link" to="/notes">Notes</Link>*/}
-                        {/*</li>*/}
                     </ul>
                 </div>
             </nav>

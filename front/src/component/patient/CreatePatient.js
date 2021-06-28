@@ -138,7 +138,7 @@ class CreatePatient extends Component {
                                                value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                                     </div>
 
-                                    <div className="form-group react-datepicker">
+                                    <div className="form-group">
                                         <label htmlFor="username">Birth</label>
                                         <input
                                             value={this.state.dateOfBirth}
@@ -146,8 +146,6 @@ class CreatePatient extends Component {
                                             placeholder="YYYY-MM-DD"
                                             pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"
                                             className="form-control"
-                                            type="date"
-                                            max="2021-06-28"
                                         />
                                         <div className="invalid-feedback d-block">
                                             {this.state.error}

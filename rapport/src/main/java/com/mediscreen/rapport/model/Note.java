@@ -22,7 +22,7 @@ public class Note {
 
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm:ss")
-    private Instant dateNote;
+    private LocalDateTime dateNote;
 
     public Note(int patientId, String note) {
         this.patientId = patientId;

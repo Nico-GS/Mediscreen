@@ -138,27 +138,29 @@ class CreatePatient extends Component {
                                                value={this.state.lastName} onChange={this.changeLastNameHandler}/>
                                     </div>
 
-                                    <form onSubmit={this.handleSubmit} noValidate>
-                                        <div className="form-group react-datepicker">
-                                            <label htmlFor="username">Birth</label>
-                                            <input
-                                                value={this.state.username}
-                                                onChange={this.changeDateOfBirthHandler}
-                                                placeholder="YYYY-MM-DD"
-                                                pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
-                                                className="form-control" />
-                                            <div className="invalid-feedback d-block">
-                                                {this.state.error}
-                                            </div>
+                                    <div className="form-group react-datepicker">
+                                        <label htmlFor="username">Birth</label>
+                                        <input
+                                            value={this.state.dateOfBirth}
+                                            onChange={this.changeDateOfBirthHandler}
+                                            placeholder="YYYY-MM-DD"
+                                            pattern="(?:19|20)(?:(?:[13579][26]|[02468][048])-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))|(?:[0-9]{2}-(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-8])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:29|30))|(?:(?:0[13578]|1[02])-31)))"
+                                            className="form-control"
+                                            type="date"
+                                            max="2021-06-28"
+                                        />
+                                        <div className="invalid-feedback d-block">
+                                            {this.state.error}
                                         </div>
-                                    </form>
-
+                                    </div>
 
 
                                     <div className="form-group">
                                         <label>Sex:</label>
                                         <input placeholder="M or F" name="sex" className="form-control"
-                                               value={this.state.sex} onChange={this.changeSexHandler}/>
+                                               value={this.state.sex} onChange={this.changeSexHandler}
+                                               maxLength="1"
+                                        />
                                     </div>
                                     <div className="form-group">
                                         <label>Address:</label>
@@ -168,10 +170,14 @@ class CreatePatient extends Component {
                                     <div className="form-group">
                                         <label>Phone Number:</label>
                                         <input placeholder="XXXXXXXXXX" name="emailId" className="form-control"
-                                               value={this.state.phoneNumber} onChange={this.changePhoneNumberHandler}/>
+                                               value={this.state.phoneNumber}
+                                               onChange={this.changePhoneNumberHandler}
+                                               maxLength="10"
+                                        />
                                     </div>
 
-                                    <button className="btn btn-success" onClick={this.saveOrUpdatePatient}>Save</button>
+                                    <button className="btn btn-success" onClick={this.saveOrUpdatePatient}>Save
+                                    </button>
                                     <button className="btn btn-danger" onClick={this.cancel.bind(this)}
                                             style={{marginLeft: "10px"}}>Cancel
                                     </button>

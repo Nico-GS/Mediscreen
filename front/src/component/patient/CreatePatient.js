@@ -16,7 +16,9 @@ class CreatePatient extends Component {
             address: '',
             phoneNumber: '',
             error: '',
-            validationMessage: "error"
+            error2: '',
+            validationMessage: "Format : 2021-10-10",
+            validMessageSex: "Only M or F"
         }
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
@@ -88,7 +90,10 @@ class CreatePatient extends Component {
     }
 
     changeSexHandler = (event) => {
-        this.setState({sex: event.target.value});
+        const target = event.target;
+        this.setState({sex: event.target.value,
+        error2: target.validationMessage
+        });
     }
 
     changeAddressHandler = (event) => {
@@ -152,14 +157,21 @@ class CreatePatient extends Component {
                                         </div>
                                     </div>
 
-
                                     <div className="form-group">
-                                        <label>Sex:</label>
-                                        <input placeholder="M or F" name="sex" className="form-control"
-                                               value={this.state.sex} onChange={this.changeSexHandler}
-                                               maxLength="1"
+                                        <label htmlFor="username">Sex</label>
+                                        <input
+                                            value={this.state.sex}
+                                            onChange={this.changeSexHandler}
+                                            placeholder="M or F"
+                                            pattern="[^abcdeghijklnopqrstuvwxyz ^ABCDEGHIJKLNOPQRSTUVWXYZ]"
+                                            maxLength="1"
+                                            className="form-control"
                                         />
+                                        <div className="invalid-feedback d-block">
+                                            {this.state.error2}
+                                        </div>
                                     </div>
+
                                     <div className="form-group">
                                         <label>Address:</label>
                                         <input name="address" className="form-control"

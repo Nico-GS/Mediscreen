@@ -1,4 +1,4 @@
-package com.mediscreen.patient.exception;
+package com.mediscreen.notes.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

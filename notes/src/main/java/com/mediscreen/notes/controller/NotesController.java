@@ -50,7 +50,7 @@ public class NotesController {
     @ApiOperation(value = "Get notes by ID")
     @GetMapping("/notes/{id}")
     public ResponseEntity<Notes> getNotesById(@PathVariable String id) {
-        LOGGER.info("GET Notes by ID OK : " + id);
+        LOGGER.info("GET Notes by ID : " + id);
         Notes notes = notesRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Notes don't exist with ID : " + id));
         return ResponseEntity.ok(notes);

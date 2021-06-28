@@ -1,5 +1,6 @@
 package com.mediscreen.rapport.controller;
 
+import com.mediscreen.rapport.exception.ResourceNotFoundException;
 import com.mediscreen.rapport.model.Rapport;
 import com.mediscreen.rapport.service.RapportService;
 import io.swagger.annotations.ApiOperation;
@@ -32,6 +33,7 @@ public class RapportController {
     @ApiOperation(value = "Get report patient with last and first name")
     @GetMapping("/reports/lastAndFirstName")
     public ResponseEntity<Rapport> getRapportByLastAndFirstName(@RequestParam("lastName") String lastName, @RequestParam("firstName") String firstName) {
+
         LOGGER.info("GET Rapport with last name : {} and first name : {}", lastName, firstName);
         Rapport rapport = rapportService.getRapportByLastAndFirstName(lastName, firstName);
         return new ResponseEntity<>(rapport, HttpStatus.OK);

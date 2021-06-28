@@ -6,7 +6,7 @@ import feign.codec.ErrorDecoder;
 public class CustomErrorDecoder implements ErrorDecoder {
 
     private final ErrorDecoder defaultErrorDecoder = new ErrorDecoder.Default();
-    private final String ResourceNotFoundException = "Resource not found";
+    private final String ResourceNotFoundException = "Rapport not found";
 
     @Override
     public Exception decode (String invoker, Response response) {

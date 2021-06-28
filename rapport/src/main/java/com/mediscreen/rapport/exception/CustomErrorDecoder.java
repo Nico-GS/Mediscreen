@@ -15,5 +15,4 @@ public class CustomErrorDecoder implements ErrorDecoder {
         }
         return defaultErrorDecoder.decode(invoker, response);
     }
-
 }

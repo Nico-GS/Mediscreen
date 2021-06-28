@@ -1,6 +1,5 @@
 package com.mediscreen.rapport.controller;
 
-import com.mediscreen.rapport.exception.ResourceNotFoundException;
 import com.mediscreen.rapport.model.Rapport;
 import com.mediscreen.rapport.service.RapportService;
 import io.swagger.annotations.ApiOperation;

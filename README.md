@@ -11,9 +11,10 @@ Docker
 MySQL / MongoDB
 
 <h2> Diagram </h2>
-![Test Image 1](https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/Sch%C3%A9maApp.PNG)
 
-
+<p align="center">
+  <img src="https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/Sch%C3%A9maApp.PNG" />
+</p>
 
 <h2> Docker </h2>
 

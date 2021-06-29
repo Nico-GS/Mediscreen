@@ -1,14 +1,17 @@
 <h1>Mediscreen App & Microservices</h1>
 
 Backend : Spring Boot Java 1.8
+<br/>
 Frontend : React.JS
+<br/>
 Maven
+<br/>
 Docker
-MySQL / MongoDB!
+<br/>
+MySQL / MongoDB
 
 <h2> Diagram </h2>
-
-https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/Sch%C3%A9maApp.PNG
+![Test Image 1](https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/Sch%C3%A9maApp.PNG)
 
 
 

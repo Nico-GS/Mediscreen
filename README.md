@@ -41,7 +41,7 @@ https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/mediscreen_patient.sq
 <h4>MongoDB</h4>
 Download MongoDB : https://www.mongodb.com/try/download/community
 <br/>
-Simply create a "mediscreen" database with the MongoDB Compass tool
+Simply create a "mediscreen" database with the MongoDB Compass tool or use this command line : <code>use mediscreen</code>  
   
   
 <br/>

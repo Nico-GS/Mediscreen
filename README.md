@@ -42,7 +42,9 @@ https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/mediscreen_patient.sq
 Download MongoDB : https://www.mongodb.com/try/download/community
 <br/>
 Simply create a "mediscreen" database with the MongoDB Compass tool
-
+  
+  
+<br/>
 <br/>
 1 - Build each image using the DockerFile included in each micro-service folder : If you want to avoid editing the docker-compose.yml, use those commands, or edit the compose file according the name you gave to the images. Don't forget to be in the right folder to launch the command : 
   

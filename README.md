@@ -18,6 +18,18 @@ MySQL / MongoDB
 
 <h2>Launch project in local with IntelliJ / Eclipse and MySQL & MongoDB</h2>
 
+Requirements : 
+  ![Java Version](https://img.shields.io/badge/Java-1.8.x-red)
+  ![Maven Version](https://img.shields.io/badge/React.JS-17.0.2-blue)
+  ![ReactJS](https://img.shields.io/badge/Maven-3.6.3-blue)
+  ![Maven Version](https://img.shields.io/badge/Maven-3.6.3-blue)
+  ![MySQL Version](https://img.shields.io/badge/MySQL-8.x-cyan)
+  ![MongoDB Version](https://img.shields.io/badge/MongoDB-4.x-green)
+  ![Docker Version](https://img.shields.io/badge/Docker-20.10.2-cyan)
+  ![J-Unit Version](https://img.shields.io/badge/JUnit-5.7.0-orange)
+  ![TomCat](https://img.shields.io/badge/TomCat-9.0.41-brightgreen)
+  ![Maven Version](https://img.shields.io/badge/Maven-4.0.0-blue)
+
 1. Download the project or import it with git
 2. Open Mediscreen with IntelliJ or Eclipse
 
@@ -28,14 +40,7 @@ To import the database into MySQL you can use the MySQL Workbench tool or by com
 <code>mysql -u [user] -p mediscreen < mediscreen_patient.sql</code>
 
 https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/mediscreen_patient.sql
-
-Requirements : 
-  ![Java Version](https://img.shields.io/badge/Java-1.8.x-red)
-  ![MySQL Version](https://img.shields.io/badge/MySQL-8.x-cyan)
-  ![MongoDB Version](https://img.shields.io/badge/MongoDB-4.x-green)
-  ![Docker Version](https://img.shields.io/badge/Docker-20.10.2-cyan)
-  ![J-Unit Version](https://img.shields.io/badge/JUnit-5.7.0-orange)
-  
+ 
   
 1 - Build each image using the DockerFile included in each micro-service folder : If you want to avoid editing the docker-compose.yml, use those commands, or edit the compose file according the name you gave to the images. Don't forget to be in the right folder to launch the command : 
   

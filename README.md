@@ -24,18 +24,20 @@ Requirements : <br/>
   ![J-Unit Version](https://img.shields.io/badge/JUnit-5.7.0-orange)
   ![TomCat](https://img.shields.io/badge/TomCat-9.0.41-brightgreen)
   ![Maven Version](https://img.shields.io/badge/Maven-4.0.0-blue)
-
+  
 1. Download the project or import it with git
 2. Open Mediscreen with IntelliJ or Eclipse
+3. Launch the command for generate the JARs : <code>mvn clean install</code>
+
 
 <h4> MySQL </h4>
 
-Before, create a MySQL database called "mediscreen".
+Create a MySQL database called "mediscreen".
 To import the database into MySQL you can use the MySQL Workbench tool or by command line :
 <code>mysql -u [user] -p mediscreen < mediscreen_patient.sql</code>
 
 https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/mediscreen_patient.sql
- 
+
   
 1 - Build each image using the DockerFile included in each micro-service folder : If you want to avoid editing the docker-compose.yml, use those commands, or edit the compose file according the name you gave to the images. Don't forget to be in the right folder to launch the command : 
   

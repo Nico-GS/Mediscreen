@@ -39,27 +39,21 @@ https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/mediscreen_patient.sq
   
 1 - Build each image using the DockerFile included in each micro-service folder : If you want to avoid editing the docker-compose.yml, use those commands, or edit the compose file according the name you gave to the images. Don't forget to be in the right folder to launch the command : 
   
-<code>
+```bash
 docker build -t ms-patient .
-</code>
-<br/>
-<code>
 docker build -t ms-notes .
-</code>
-<br/>
-<code>
 docker build -t ms-rapport .
-</code>
-<br/>
-<code>
 docker build -t ms-front .
-</code> 
+```
+
 <br/>
 <br/>
 
 2 - And for launch Docker Compose, at the root of project, this file inject using environment variable and the cross origin url. It also launch mysql 8 and mongoDb 4 :
 
-<code>docker compose up</code>
+```bash
+docker compose up
+```
   
 3 - Once the microservices with Docker are launched, the application is accessible at: http://localhost
   

@@ -37,8 +37,13 @@ To import the database into MySQL you can use the MySQL Workbench tool or by com
 <code>mysql -u [user] -p mediscreen < mediscreen_patient.sql</code>
 
 https://github.com/Nico-GS/Mediscreen/blob/rapport-sprint3/mediscreen_patient.sql
-
   
+<h4>MongoDB</h4>
+Download MongoDB : https://www.mongodb.com/try/download/community
+<br/>
+Simply create a "mediscreen" database with the MongoDB Compass tool
+
+<br/>
 1 - Build each image using the DockerFile included in each micro-service folder : If you want to avoid editing the docker-compose.yml, use those commands, or edit the compose file according the name you gave to the images. Don't forget to be in the right folder to launch the command : 
   
 ```bash

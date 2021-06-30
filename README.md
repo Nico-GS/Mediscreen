@@ -27,6 +27,7 @@ Requirements : <br/>
 2. Open Mediscreen with IntelliJ or Eclipse
 3. Launch the command for generate the JARs : <code>mvn clean install</code>
 
+Docker for Windows : https://docs.docker.com/docker-for-windows/install/
 
 <h4> MySQL </h4>
 

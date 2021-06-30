@@ -13,7 +13,7 @@ Java / Spring Boot / ReactJS / Docker
 
 <h2>Launch project in local with IntelliJ / Eclipse and MySQL & MongoDB</h2>
 
-Requirements : 
+Requirements : <br/>
   ![Java Version](https://img.shields.io/badge/Java-1.8.x-red)
   ![Maven Version](https://img.shields.io/badge/React.JS-17.0.2-blue)
   ![ReactJS](https://img.shields.io/badge/Maven-3.6.3-blue)

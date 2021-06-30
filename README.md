@@ -30,7 +30,7 @@ Requirements : <br/>
 
 <h4> MySQL </h4>
 
-Before, create a database called "mediscreen".
+Before, create a MySQL database called "mediscreen".
 To import the database into MySQL you can use the MySQL Workbench tool or by command line :
 <code>mysql -u [user] -p mediscreen < mediscreen_patient.sql</code>
 
@@ -45,9 +45,6 @@ docker build -t ms-notes .
 docker build -t ms-rapport .
 docker build -t ms-front .
 ```
-
-<br/>
-<br/>
 
 2 - And for launch Docker Compose, at the root of project, this file inject using environment variable and the cross origin url. It also launch mysql 8 and mongoDb 4 :
 

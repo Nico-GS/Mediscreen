@@ -2,6 +2,8 @@
 
 Medical management application: patients, notes and health report.
 
+Java / Spring Boot / ReactJS / Docker
+
 
 <h2> Diagram </h2>
 
